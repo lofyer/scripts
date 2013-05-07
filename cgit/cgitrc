@@ -3,7 +3,7 @@
 #
 
 # Enable caching of up to 1000 output entries
-cache-size=1000
+cache-size=0
 
 # Specify some default clone prefixes
 #clone-prefix=git://example.com ssh://example.com/pub/git http://example.com/git
