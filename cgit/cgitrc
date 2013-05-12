@@ -7,7 +7,7 @@ cache-size=0
 
 # Specify some default clone prefixes
 #clone-prefix=git://example.com ssh://example.com/pub/git http://example.com/git
-clone-prefix=git@localhost:
+clone-prefix=http://localhost/cgit
 
 # Specify the css url
 css=/cgit-data/cgit.css
@@ -75,4 +75,9 @@ mimetype.svg=image/svg+xml
 #repo.owner=fooman@example.com
 #repo.readme=info/web/about.html
 
+section-from-path=1
 scan-path=/home/git
+enable-remote-branches=1
+enable-subject-links=1
+enable-git-config=1
+local-time=1
