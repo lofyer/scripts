@@ -7,7 +7,7 @@ cache-size=0
 
 # Specify some default clone prefixes
 #clone-prefix=git://example.com ssh://example.com/pub/git http://example.com/git
-clone-prefix=http://localhost/cgit
+clone-prefix= (Read-Only)http://localhost/cgit git@localhost:~
 
 # Specify the css url
 css=/cgit-data/cgit.css
@@ -58,7 +58,7 @@ mimetype.png=image/png
 mimetype.svg=image/svg+xml
 
 # Enable syntax highlighting (requires the highlight package)
-# source-filter=/usr/libexec/cgit/filters/syntax-highlighting.sh
+#source-filter=/usr/libexec/cgit/filters/syntax-highlighting.sh
 
 ##
 ## List of repositories.
@@ -81,3 +81,4 @@ enable-remote-branches=1
 enable-subject-links=1
 enable-git-config=1
 local-time=1
+root-readme=/home/git/readme
