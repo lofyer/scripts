@@ -1,0 +1,52 @@
+NameVirtualHost *:80
+
+<VirtualHost *:80>
+ServerName lofyer.org
+DocumentRoot /var/www
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^lofyer.org  [NC]
+RewriteRule ^(.*) http://blog.lofyer.org$1 [R=permanent,L]
+</VirtualHost>
+
+<VirtualHost *:80>
+ServerName blog.lofyer.org
+DocumentRoot /var/www
+</VirtualHost>
+
+<VirtualHost *:80>
+ServerName cloud.lofyer.org
+DocumentRoot /mysite/owncloud
+</VirtualHost>
+
+<VirtualHost *:80>                                       
+    ServerName git.lofyer.org
+    DocumentRoot "/mysite/cgit"
+    DirectoryIndex cgit.cgi
+    SetEnv  CGIT_CONFIG   /etc/cgitrc
+    Alias /cgit.css /mysite/cgit/cgit.css
+    Alias /cgit.png /mysite/cgit/cgit.png
+
+    <Directory "/mysite/cgit">
+	Options Indexes FollowSymLinks
+	Options +ExecCGI
+	Order allow,deny
+	Allow from all
+	AddHandler cgi-script .cgi
+	DirectoryIndex cgit.cgi
+    </Directory>
+
+    <Directory "/home/git">
+        Allow from all
+    </Directory>
+
+# To debug rewrite just enable them.
+#    RewriteLog /var/log/httpd/rewrite_log
+#    RewriteLogLevel 9
+#    ErrorLog /var/log/httpd/gitweb
+</VirtualHost>
+
+#<VirtualHost *:80>
+#ServerName lofyer.org
+#ServerAlias *.lofyer.org
+#DocumentRoot /var/www
+#</VirtualHost>
