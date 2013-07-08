@@ -11,8 +11,8 @@
 -planner
 
 # Drop the Java plugin
-#-icedtea-web
-#-java-1.7.0-openjdk
+-icedtea-web
+-java-1.7.0-openjdk
 
 # Drop things that pull in perl
 -linux-atm

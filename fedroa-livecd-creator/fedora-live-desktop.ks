@@ -4,11 +4,12 @@
 
 %include fedora-live-base.ks
 
-#part / --size 9120
+part / --size 5120
 
 %packages
 @firefox
 @gnome-desktop
+#@libreoffice
 
 # FIXME; apparently the glibc maintainers dislike this, but it got put into the
 # desktop image at some point.  We won't touch this one for now.
@@ -23,7 +24,7 @@ nss-mdns
 
 %end
 
-%post --nochroot
+%post
 cat >> /etc/rc.d/init.d/livesys << EOF
 # disable screensaver locking
 cat >> /usr/share/glib-2.0/schemas/org.gnome.desktop.screensaver.gschema.override << FOE

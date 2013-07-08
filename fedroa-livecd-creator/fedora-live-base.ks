@@ -12,15 +12,17 @@ keyboard us
 timezone US/Eastern
 auth --useshadow --enablemd5
 selinux --permissive
-firewall --enabled --service=mdns
+firewall --disabled
 xconfig --startxonboot
-#part / --size 9120 --fstype ext4
-part / --size 5120
-services --enabled=NetworkManager,sshd --disabled=network
+part / --size 5120 --fstype ext4
+services --enabled=NetworkManager --disabled=network,iptables,firewalld,vdsmd
 
 #repo --name=rawhide --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=rawhide&arch=$basearch
-repo --name=fedora --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$releasever&arch=$basearch
-repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=updates-released-f$releasever&arch=$basearch
+#repo --name=fedora --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$releasever&arch=$basearch
+repo --name=fedora --baseurl=http://mirrors.sohu.com/fedora/releases/$releasever/Everything/$basearch/os/
+#repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=updates-released-f$releasever&arch=$basearch
+repo --name=updates --baseurl=http://mirrors.sohu.com/fedora/updates/$releasever/$basearch/
+repo --name=ovirt --baseurl=file:///root/Virtfan_Release_0528_fixed/
 #repo --name=updates-testing --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=updates-testing-f$releasever&arch=$basearch
 
 %packages
@@ -32,7 +34,14 @@ repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?rep
 @dial-up
 @multimedia
 @hardware-support
+#@printing
 ovirt-engine
+virtfan-utilities
+vdsm
+vdsm-cli
+qemu-kvm-tools
+-cman
+
 
 # Explicitly specified here:
 # <notting> walters: because otherwise dependency loops cause yum issues.
@@ -52,7 +61,7 @@ fpaste
 
 %end
 
-%post --nochroot
+%post
 # FIXME: it'd be better to get this installed from a package
 cat > /etc/rc.d/init.d/livesys << EOF
 #!/bin/bash
