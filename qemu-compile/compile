@@ -1,1 +1,2 @@
-./configure --enable-sdl --enable-virtfs --enable-vnc --enable-vnc-tls --enable-curses --enable-curl --enable-kvm --enable-system --enable-user --enable-linux-user --enable-guest-base --enable-cap-ng --enable-spice --enable-libiscsi --enable-smartcard-nss --enable-usb-redir --enable-guest-agent --enable-libusb
+./configure --enable-sdl --enable-virtfs --enable-vnc --enable-vnc-tls --enable-curses --enable-curl --enable-kvm --enable-system --enable-user --enable-linux-user --enable-guest-base --enable-cap-ng --enable-spice --enable-libiscsi --enable-smartcard-nss --enable-usb-redir --enable-guest-agent --enable-libusb \
+--target-list="x86_64-softmmu i386-softmmu arm-softmmu armeb-linux-user arm-linux-user i386-linux-user x86_64-linux-user"
