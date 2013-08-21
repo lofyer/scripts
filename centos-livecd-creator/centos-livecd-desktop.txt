@@ -2,209 +2,79 @@ lang en_US.UTF-8
 keyboard us
 timezone US/Eastern
 auth --useshadow --enablemd5
-selinux --enforcing
-firewall --enabled
-repo --name=a-base    --baseurl=http://mirror.centos.org/centos/5/os/$basearch
-repo --name=a-updates --baseurl=http://mirror.centos.org/centos/5/updates/$basearch
+selinux --permissive
+firewall --disabled
+repo --name=a-base    --baseurl=http://mirrors.sohu.com/centos/6.4/os/x86_64
+repo --name=a-updates --baseurl=http://mirrors.sohu.com/centos/6.4/updates/x86_64
 #repo --name=a-extras  --baseurl=http://mirror.centos.org/centos/5/extras/$basearch
-repo --name=a-live    --baseurl=http://www.nanotechnologies.qc.ca/propos/linux/centos-live/$basearch/live
 xconfig --startxonboot
 part / --size 4096
 services --enabled=cups,haldaemon,mcstrans,NetworkManager,portmap,restorecond --disabled=anacron,auditd,bluetooth,cpuspeed,gpm,hidd,ip6tables,mdmonitor,microcode_ctl,netfs,network,nfslock,pcscd,readahead_early,readahead_later,rpcgssd,rpcidmapd,sshd
 
 
 %packages
+
 syslinux
 kernel
-
-@admin-tools
-#packages removed from @admin-tools
--sabayon
--system-config-kdump
-#@admin-tools <end of package list>
-
-
 @base
-#package added to @base
-squashfs-tools
-#packages removed from @base
--amtu
--bind-utils
--ccid
--conman
--coolkey
--crash
--dump
--ibmasm
--iptstate
--jwhois
--kexec-tools
--ksh
--lftp
--libaio
--logwatch
--mailcap
--nc
--nss_db
--nss_ldap
--oddjob
--pax
--pkinit-nss
--psacct
--quota
--redhat-lsb
--sendmail
--specspo
--stunnel
--talk
--tcpdump
--tree
--yum-updatesd
--vixie-cron
-#@base <end of package list>
-
-
-@base-x
-#packages removed from @base-x
--bitstream-vera-fonts
--linuxwacom
--rhgb
--vnc-server
--xorg-x11-server-Xnest
--xorg-x11-twm
--xterm
-#@base-x <end of package list>
-
-
 @core
-#packages removed from @core
--ed
--gnu-efi
--libhugetlbfs
-#@core <end of package list>
-
-
-@dialup
-#packages added to @dialup
-statserial
-#@dialup <end of package list>
-
-
-@gnome-desktop
-#packages added to @gnome-desktop
-gnome-bluetooth
-gnome-pilot-conduits
-gnome-themes
-#packages removed from @gnome-desktop
--esc
--eog
--gimp-print-utils
--gtkhtml3
--gnome-backgrounds
--gnome-user-share
+@basic-desktop
+@desktop-platform
+@fonts
+@general-desktop
+@graphical-admin-tools
+@internet-browser
+@legacy-x
+@network-file-system-client
+@x11
+lokkit
+mtools
+python-dmidecode
+sgpio
+genisoimage
+wodim
+libXmu
+-abrt-cli
+-abrt-addon-kerneloops
+-abrt-addon-ccpp
+-nano
+-abrt-plugin-sosreport
+-abrt-addon-python
+#-rhn-setup-gnome
 -gok
--nautilus-sendto
--orca
--sabayon-apply
 -vino
-#@gnome-desktop <end of package list>
-
-
-@graphical-internet
-#packages removed from @graphical-internet
--evolution
--evolution-connector
--evolution-webcal
--ekiga
-#packages added to @graphical-internet
-gftp
-pidgin
-thunderbird
-#@graphical-internet <end of package list>
-
-
-@office
-#packages removed from @office
--openoffice.org-draw
--openoffice.org-graphicfilter
--openoffice.org-math
--openoffice.org-xsltfilter
-#@office <end of package list>
-
-
-@printing
-#packages added to @printing
-bluez-utils-cups
-#@printing <end of package list>
-
-
-@sound-and-video
-#packages removed from @sound-and-video
+-gdm-plugin-fingerprint
+#-rhn-setup-gnome
+#-yum-rhn-plugin
+#-rhnsd
+-PackageKit-gstreamer-plugin
+-gnome-backgrounds
 -rhythmbox
--vorbis-tools
-#@sound-and-video <end of package list>
+-compiz-gnome
+-scenery-backgrounds
+-gnote
+-evince-dvi
+-seahorse
+-sound-juicer
+#gthumb
+#totem
+#pidgin
+#cups
+#thunderbird
+#gimp
 
-
-@system-tools
-#packages added to @system-tools
-nmap-frontend
-rdesktop
-tsclient
-#packages removed from @system-tools
--bluez-hcidump
--hwbrowser
--OpenIPMI
--openldap-clients
--xdelta
--zisofs-tools
--zsh
-#@system-tools <end of package list>
-
-
-@text-internet
-#packages removed from @text-internet
--elinks
--fetchmail
--mutt
--slrn
-#@text-internet <end of package list>
-
-
-# Other packages we don't want to include in the Live CD
--*debuginfo
--bind-libs
--compat*
--exim
--gamin-python
--nscd
--oddjob-libs
--procmail
--python-ldap
--rmt
--tclx
--yp-tools
-
-# For the x86_64 version, one could want to remove i386 and i686 libs
-#-*.i386
-#-*.i686
-
-# other usefull packages
-Cluster_Administration-en-US
-Deployment_Guide-en-US
-Global_File_System-en-US
-Virtualization-en-US
-busybox
-mailx
+# livecd bits to set up the livecd and be able to install
 memtest86+
-patch
-yum-fastestmirror
-yum-metadata-parser
+#livecd-tools
+anaconda
+device-mapper-multipath
+isomd5sum
 
 
 %post
 
 ## LiveCD version for the link toward the release notes
-VERSION="5.6"
+VERSION="6.4"
 
 ## locales for the Live CD
 PRIMARY_LANGUAGE="en"

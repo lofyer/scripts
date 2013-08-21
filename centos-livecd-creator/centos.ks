@@ -2,13 +2,10 @@ lang en_US.UTF-8
 keyboard us
 timezone US/Eastern
 auth --useshadow --enablemd5
-selinux --permissive
-firewall --disabled
-#repo --name=base    --baseurl=file://REPOPATH
+selinux --enforcing
+firewall --enabled --service=mdns
 repo --name=a-base    --baseurl=http://mirrors.sohu.com/centos/6.4/os/x86_64
 repo --name=a-updates --baseurl=http://mirrors.sohu.com/centos/6.4/updates/x86_64
-#repo --name=a-extras  --baseurl=http://mirror.centos.org/centos/6.4/extras/x86_64
-#repo --name=a-live    --baseurl=http://www.nanotechnologies.qc.ca/propos/linux/centos-live/x86_64/live
 
 xconfig --startxonboot
 part / --size 4096 --fstype ext4
@@ -28,8 +25,9 @@ kernel
 @internet-browser
 @legacy-x
 @network-file-system-client
+@print-client
+@remote-desktop-clients
 @x11
-lokkit
 mtools
 python-dmidecode
 sgpio
@@ -58,12 +56,12 @@ libXmu
 -evince-dvi
 -seahorse
 -sound-juicer
-#gthumb
-#totem
-#pidgin
-#cups
-#thunderbird
-#gimp
+gthumb
+totem
+pidgin
+cups
+thunderbird
+gimp
 
 # livecd bits to set up the livecd and be able to install
 memtest86+
@@ -556,3 +554,4 @@ EOF_postnochroot
 /bin/bash -x /root/postnochroot-install 2>&1 | tee /root/postnochroot-install.log
 
 %end
+
