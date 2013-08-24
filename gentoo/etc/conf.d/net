@@ -1,0 +1,7 @@
+# This blank configuration will automatically use DHCP for any net.*
+# scripts in /etc/init.d.  To create a more complete configuration,
+# please review /usr/share/doc/openrc*/net.example* and save your configuration
+# in /etc/conf.d/net (this file :]!).
+config_enp3s0="192.168.1.11 netmask 255.255.255.0 brd 192.168.1.255"
+routes_enp3s0="default via 192.168.1.1"
+dns_servers_enp3s0="192.168.1.1"
