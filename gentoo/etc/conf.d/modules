@@ -28,3 +28,4 @@
 #modules="vboxpci"
 modules="kvm"
 modules="kvm-intel"
+modules="tun"
