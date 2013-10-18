@@ -1,13 +1,15 @@
 #NameVirtualHost *:80
+
 <VirtualHost *:80>
 ServerName lofyer.org
 ServerAlias www.lofyer.org
-DocumentRoot /var/www
+DocumentRoot /var/www/wp
 RewriteEngine on
 # disable other dns
 RewriteCond %{HTTP_HOST} !^www.lofyer.org [NC]
 RewriteCond %{HTTP_HOST} !^lofyer.org [NC]
 RewriteCond %{HTTP_HOST} !^69.164.197.168 [NC]
+RewriteCond %{HTTP_HOST} !^li112-168.members.linode.com [NC]
 RewriteRule ^(.*) http://127.0.0.1 [R=301,L]
 # lofyer.org->blog.lofyer.org
 RewriteCond %{HTTP_HOST} ^lofyer.org  [NC,OR]
@@ -18,13 +20,13 @@ RewriteRule ^(.*) http://blog.lofyer.org$1 [R=permanent,L]
 <VirtualHost *:80>
 ServerName blog.lofyer.org
 ServerAlias blog.lofyer.org
-DocumentRoot /var/www
+DocumentRoot /var/www/wp
 </VirtualHost>
 
 <VirtualHost *:80>
 ServerName cloud.lofyer.org
 ServerAlias cloud.lofyer.org
-DocumentRoot /mysite/owncloud
+DocumentRoot /var/www/owncloud
 </VirtualHost>
 
 <VirtualHost *:80>                                       

@@ -1,0 +1,34 @@
+<IfModule mod_proxy.c>
+        #turning ProxyRequests on and allowing proxying from all may allow
+        #spammers to use your proxy to send email.
+        ProxyRequests Off
+        <Proxy *>
+                AddDefaultCharset off
+                Order deny,allow
+                Allow from all
+        </Proxy>
+        # Enable/disable the handling of HTTP/1.1 "Via:" headers.
+        # ("Full" adds the server version; "Block" removes all outgoing Via: headers)
+        # Set to one of: Off | On | Full | Block
+        ProxyVia On
+</IfModule>
+
+NameVirtualHost *:80
+
+<VirtualHost *:80>
+        ServerName license.example.com
+        ProxyRequests On
+        ProxyPass / http://192.168.1.115
+</VirtualHost>
+
+<VirtualHost *:80>
+        ServerName git.example.com
+        ProxyRequests On
+        ProxyPass / http://192.168.1.100/
+        ProxyPassReverse / http://192.168.1.100/
+</VirtualHost>
+
+<VirtualHost *:80>
+        ServerName proxy.example.com
+        DocumentRoot /var/www/html/
+</VirtualHost>
