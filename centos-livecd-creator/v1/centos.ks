@@ -8,8 +8,6 @@ repo --name=a-base    --baseurl=http://mirrors.yun-idc.com/centos/6.4/os/x86_64
 repo --name=a-updates --baseurl=http://mirrors.yun-idc.com/centos/6.4/updates/x86_64
 repo --name=epel --baseurl=http://mirrors.yun-idc.com/epel/6/x86_64
 #repo --name=ovirt --baseurl=http://resources.ovirt.org/releases/stable/rpm/EL/6
-repo --name=virtfan --baseurl=file:///home/demo/virtfan-repo
-repo --name=virtfan-engine --baseurl=file:///home/demo/virtfan-engine-dev/output
 repo --name=rpmfusion-free --baseurl=http://download1.rpmfusion.org/free/el/updates/6/x86_64
 #repo --name=virtfan --baseurl=file:///home/demo/ovirt-3.3-repo/resources.ovirt.org/releases/3.3/rpm/EL/6
 
@@ -34,7 +32,6 @@ kernel
 #@print-client
 @remote-desktop-clients
 @x11
-ovirt-engine
 mtools
 python-dmidecode
 sgpio
@@ -64,9 +61,7 @@ libXmu
 -seahorse
 -sound-juicer
 gthumb
-ovirt-engine
 #start here
-virtfan-utilities
 vdsm
 tuned
 iproute
