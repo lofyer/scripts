@@ -1,0 +1,359 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/pub/livecd/!svn/ver/367/trunk/SL6/livecd-config
+END
+sl6rolling-extra-software.ks
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/pub/livecd/!svn/ver/347/trunk/SL6/livecd-config/sl6rolling-extra-software.ks
+END
+sl62-mini_livecd-icewm.ks
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/pub/livecd/!svn/ver/337/trunk/SL6/livecd-config/sl62-mini_livecd-icewm.ks
+END
+sl64-mini_livecd-icewm.ks
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/pub/livecd/!svn/ver/359/trunk/SL6/livecd-config/sl64-mini_livecd-icewm.ks
+END
+sl6rolling-livecd64-gnome.ks
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/pub/livecd/!svn/ver/367/trunk/SL6/livecd-config/sl6rolling-livecd64-gnome.ks
+END
+sl64-livecd-gnome-NONPAE.ks
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/pub/livecd/!svn/ver/366/trunk/SL6/livecd-config/sl64-livecd-gnome-NONPAE.ks
+END
+sl6rolling-mini_livecd-icewm.ks
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/pub/livecd/!svn/ver/367/trunk/SL6/livecd-config/sl6rolling-mini_livecd-icewm.ks
+END
+sl6rolling-livecd-gnome-NONPAE.ks
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/pub/livecd/!svn/ver/367/trunk/SL6/livecd-config/sl6rolling-livecd-gnome-NONPAE.ks
+END
+sl62-livedvd.ks
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/pub/livecd/!svn/ver/344/trunk/SL6/livecd-config/sl62-livedvd.ks
+END
+sl61-mini_livecd64-icewm.ks
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/pub/livecd/!svn/ver/330/trunk/SL6/livecd-config/sl61-mini_livecd64-icewm.ks
+END
+sl63-mini_livecd64-icewm.ks
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/pub/livecd/!svn/ver/349/trunk/SL6/livecd-config/sl63-mini_livecd64-icewm.ks
+END
+sl64-livedvd.ks
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/pub/livecd/!svn/ver/359/trunk/SL6/livecd-config/sl64-livedvd.ks
+END
+sl6rolling-livedvd.ks
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/pub/livecd/!svn/ver/367/trunk/SL6/livecd-config/sl6rolling-livedvd.ks
+END
+sl61-doc.ks
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/pub/livecd/!svn/ver/329/trunk/SL6/livecd-config/sl61-doc.ks
+END
+sl63-doc.ks
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/pub/livecd/!svn/ver/349/trunk/SL6/livecd-config/sl63-doc.ks
+END
+sl61-live-base.ks
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/pub/livecd/!svn/ver/333/trunk/SL6/livecd-config/sl61-live-base.ks
+END
+sl61-livedvd64.ks
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/pub/livecd/!svn/ver/329/trunk/SL6/livecd-config/sl61-livedvd64.ks
+END
+sl63-livedvd64.ks
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/pub/livecd/!svn/ver/349/trunk/SL6/livecd-config/sl63-livedvd64.ks
+END
+sl63-live-base.ks
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/pub/livecd/!svn/ver/353/trunk/SL6/livecd-config/sl63-live-base.ks
+END
+sl61-extra-software.ks
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/pub/livecd/!svn/ver/329/trunk/SL6/livecd-config/sl61-extra-software.ks
+END
+sl62-extra-software.ks
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/pub/livecd/!svn/ver/347/trunk/SL6/livecd-config/sl62-extra-software.ks
+END
+sl6rolling-extra-software-livedvd.ks
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/pub/livecd/!svn/ver/347/trunk/SL6/livecd-config/sl6rolling-extra-software-livedvd.ks
+END
+sl63-extra-software.ks
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/pub/livecd/!svn/ver/349/trunk/SL6/livecd-config/sl63-extra-software.ks
+END
+sl6rolling-config-icewm.ks
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/pub/livecd/!svn/ver/355/trunk/SL6/livecd-config/sl6rolling-config-icewm.ks
+END
+sl64-extra-software.ks
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/pub/livecd/!svn/ver/359/trunk/SL6/livecd-config/sl64-extra-software.ks
+END
+sl6rolling-livecd-gnome.ks
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/pub/livecd/!svn/ver/367/trunk/SL6/livecd-config/sl6rolling-livecd-gnome.ks
+END
+sl64-live-NONPAE.ks
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/pub/livecd/!svn/ver/365/trunk/SL6/livecd-config/sl64-live-NONPAE.ks
+END
+sl61-livecd64-gnome.ks
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/pub/livecd/!svn/ver/330/trunk/SL6/livecd-config/sl61-livecd64-gnome.ks
+END
+sl6rolling-live-NONPAE.ks
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/pub/livecd/!svn/ver/367/trunk/SL6/livecd-config/sl6rolling-live-NONPAE.ks
+END
+sl62-livecd64-gnome.ks
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/pub/livecd/!svn/ver/348/trunk/SL6/livecd-config/sl62-livecd64-gnome.ks
+END
+sl61-mini_livecd-icewm.ks
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/pub/livecd/!svn/ver/329/trunk/SL6/livecd-config/sl61-mini_livecd-icewm.ks
+END
+sl63-livecd64-gnome.ks
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/pub/livecd/!svn/ver/350/trunk/SL6/livecd-config/sl63-livecd64-gnome.ks
+END
+sl63-mini_livecd-icewm.ks
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/pub/livecd/!svn/ver/358/trunk/SL6/livecd-config/sl63-mini_livecd-icewm.ks
+END
+sl64-livecd64-gnome.ks
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/pub/livecd/!svn/ver/363/trunk/SL6/livecd-config/sl64-livecd64-gnome.ks
+END
+sl61-livedvd.ks
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/pub/livecd/!svn/ver/329/trunk/SL6/livecd-config/sl61-livedvd.ks
+END
+sl63-livedvd.ks
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/pub/livecd/!svn/ver/358/trunk/SL6/livecd-config/sl63-livedvd.ks
+END
+sl62-mini_livecd64-icewm.ks
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/pub/livecd/!svn/ver/344/trunk/SL6/livecd-config/sl62-mini_livecd64-icewm.ks
+END
+sl64-mini_livecd64-icewm.ks
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/pub/livecd/!svn/ver/359/trunk/SL6/livecd-config/sl64-mini_livecd64-icewm.ks
+END
+sl6rolling-mini_livecd64-icewm.ks
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/pub/livecd/!svn/ver/340/trunk/SL6/livecd-config/sl6rolling-mini_livecd64-icewm.ks
+END
+sl62-doc.ks
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/pub/livecd/!svn/ver/337/trunk/SL6/livecd-config/sl62-doc.ks
+END
+sl61-config-icewm.ks
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/pub/livecd/!svn/ver/329/trunk/SL6/livecd-config/sl61-config-icewm.ks
+END
+sl62-extra-software-livedvd.ks
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/pub/livecd/!svn/ver/347/trunk/SL6/livecd-config/sl62-extra-software-livedvd.ks
+END
+sl63-extra-software-livedvd.ks
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/pub/livecd/!svn/ver/349/trunk/SL6/livecd-config/sl63-extra-software-livedvd.ks
+END
+sl62-livedvd64.ks
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/pub/livecd/!svn/ver/337/trunk/SL6/livecd-config/sl62-livedvd64.ks
+END
+sl62-config-icewm.ks
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/pub/livecd/!svn/ver/337/trunk/SL6/livecd-config/sl62-config-icewm.ks
+END
+sl62-live-base.ks
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/pub/livecd/!svn/ver/346/trunk/SL6/livecd-config/sl62-live-base.ks
+END
+sl64-doc.ks
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/pub/livecd/!svn/ver/359/trunk/SL6/livecd-config/sl64-doc.ks
+END
+sl63-config-icewm.ks
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/pub/livecd/!svn/ver/354/trunk/SL6/livecd-config/sl63-config-icewm.ks
+END
+sl61-livecd-gnome.ks
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/pub/livecd/!svn/ver/329/trunk/SL6/livecd-config/sl61-livecd-gnome.ks
+END
+sl64-extra-software-livedvd.ks
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/pub/livecd/!svn/ver/359/trunk/SL6/livecd-config/sl64-extra-software-livedvd.ks
+END
+sl62-livecd-gnome.ks
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/pub/livecd/!svn/ver/348/trunk/SL6/livecd-config/sl62-livecd-gnome.ks
+END
+sl64-config-icewm.ks
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/pub/livecd/!svn/ver/359/trunk/SL6/livecd-config/sl64-config-icewm.ks
+END
+sl64-live-base.ks
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/pub/livecd/!svn/ver/359/trunk/SL6/livecd-config/sl64-live-base.ks
+END
+sl64-livedvd64.ks
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/pub/livecd/!svn/ver/359/trunk/SL6/livecd-config/sl64-livedvd64.ks
+END
+sl63-livecd-gnome.ks
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/pub/livecd/!svn/ver/358/trunk/SL6/livecd-config/sl63-livecd-gnome.ks
+END
+sl6rolling-doc.ks
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/pub/livecd/!svn/ver/337/trunk/SL6/livecd-config/sl6rolling-doc.ks
+END
+sl64-livecd-gnome.ks
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/pub/livecd/!svn/ver/364/trunk/SL6/livecd-config/sl64-livecd-gnome.ks
+END
+sl6rolling-live-base.ks
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/pub/livecd/!svn/ver/359/trunk/SL6/livecd-config/sl6rolling-live-base.ks
+END
+sl6rolling-livedvd64.ks
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/pub/livecd/!svn/ver/337/trunk/SL6/livecd-config/sl6rolling-livedvd64.ks
+END
+sl63-live-NONPAE.ks
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/pub/livecd/!svn/ver/360/trunk/SL6/livecd-config/sl63-live-NONPAE.ks
+END
