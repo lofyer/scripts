@@ -1,5 +1,5 @@
 1. On boot
-rc-update del net.enp3s0
+rc-update del net.eth0
 rc-update add net.br0
 rc-update add net.tap0
 rc-update add net.tap1
