@@ -1,0 +1,5 @@
+DEVICE=eth0
+ONBOOT=yes
+BRIDGE=mgmtnet
+NM_CONTROLLED=no
+STP=no
