@@ -1,0 +1,27 @@
+Solution
+
+The simplest approach is to use a NAT. Here are the steps:
+
+As root in the host, create and setup your tap0 device (192.168.100.0 will be our NAT network, and felipec our user):
+
+# tunctl -u lofyer -t tap0
+# ifconfig tap0 192.168.100.1 up
+
+# qemu-kvm -hda winxp.cow -m 512 -net nic -net tap,ifname=tap0,script=no
+
+In your guest:
+ip addr: 192.168.100.2
+gateway: 192.168.100.1
+dns: 8.8.8.8
+
+
+NAT
+
+As root in the host:
+
+# echo 1 > /proc/sys/net/ipv4/ip_forward
+# iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+# iptables -I FORWARD 1 -i tap0 -j ACCEPT
+# iptables -I FORWARD 1 -o tap0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+Now you should be able to use ping back-and-forth between the guest and the host, and both should be able to access the Internet 
