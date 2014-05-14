@@ -3,3 +3,4 @@ set termencoding=utf-8
 set encoding=prc 
 set tabstop=4
 set number
+set noswapfile
