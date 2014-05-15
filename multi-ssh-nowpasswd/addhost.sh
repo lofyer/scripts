@@ -1,9 +1,5 @@
 #!/bin/bash
-if [[ $1 = "" ]]
-then
-	echo -e "Make sure that selinux has been set to permissive or disabled.\nUsage: addhost.sh"
-	exit
-fi
+echo -e "Make sure that selinux has been set to permissive or disabled."
 
 declare -a HOSTS=($(cat hosts.list))
 cnt=${#HOSTS[@]}
