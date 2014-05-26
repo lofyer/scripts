@@ -1,0 +1,11 @@
+1. With white background.
+$ cat > .bash_profile << EOF
+> export CLICOLOR=1
+> export LSCOLORS=ExFxCxDxBxegedabagacad
+> EOF
+
+2. With black background.
+$ cat > .bash_profile << EOF
+> export CLICOLOR=1
+> export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+> EOF
