@@ -1,0 +1,8 @@
+1. Install brew
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+
+2. Sample
+brew install wget
+
+3. FAQ
+see https://github.com/Homebrew/homebrew/wiki/FAQ
