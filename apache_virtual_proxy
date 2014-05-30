@@ -26,3 +26,26 @@ NameVirtualHost *:80
         ServerName web0.virtfan.com
         DocumentRoot /var/www/html/
 </VirtualHost>
+
+# SSL proxy
+# Besure that the proxy server and the server behind it have got the same CA
+
+</VirtualHost>
+NameVirtualHost *:443
+
+<VirtualHost *:443>
+Servername b.example.com
+ErrorLog logs/ssl_error_log
+TransferLog logs/ssl_access_log
+LogLevel warn
+SSLEngine on
+SSLProxyEngine on
+#SSLProtocol all -SSLv2
+#SSLCipherSuite ALL:!ADH:!EXPORT:!SSLv2:RC4+RSA:+HIGH:+MEDIUM:+LOW
+SSLCertificateFile /etc/httpd/conf.d/example/server.crt
+SSLCertificateKeyFile /etc/httpd/conf.d/example/server.key
+SSLCACertificateFile /etc/httpd/conf.d/example/ca.crt
+ProxyRequests Off
+ProxyPass / https://192.168.122.103/
+ProxyPassReverse / https://192.168.122.103/
+</VirtualHost>
