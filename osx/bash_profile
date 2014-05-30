@@ -1,0 +1,5 @@
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+# For brew
+alias curl='curl --insecure'
+alias htop='sudo htop'

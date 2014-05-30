@@ -6,3 +6,8 @@ brew install wget
 
 3. FAQ
 see https://github.com/Homebrew/homebrew/wiki/FAQ
+
+4. My favorite
+axel: axel -a -n 5 http://a.b.com/a.tar.bz2
+htop: sudo htop
+nmap: namp localhost
