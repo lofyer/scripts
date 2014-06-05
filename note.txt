@@ -1,0 +1,1 @@
+awk '{if (((NR <= 9747) && (NR % 9 ==0)) || ((NR > 9747) && ((NR-9747) % 10 == 0))) print $0}' export-exl2csv-no-sci.txt | awk -F '\t' '{print $2,$6,$7,$9,$10}' > b
