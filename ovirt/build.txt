@@ -1,0 +1,3 @@
+1. Recommend Oracle JRE/JDK
+2. Maven needed
+3. export JAVA_HOME=PATH_TO_JDK(/usr/java/jdk)
