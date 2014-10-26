@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import libvirt
 
-URI = "qemu+ssh://root@192.168.2.180/system"
+URI = "qemu+ssh://root@192.168.2.110/system"
 USER = "root"
 PASS = "123456"
 

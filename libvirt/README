@@ -1,0 +1,11 @@
+1. Authentication(ssh) required.
+2. Set hostname in /etc/hosts on both hosts
+    /etc/hosts
+    192.168.2.110   libvirt1.example.com
+    192.168.2.111   libvirt2.example.com
+   and execute command
+    # hostname libvirt1.example.com
+3. Copy disk file hd.img from libvirt1 to libvirt2 in the same pathname OR use shared storage.
+    # scp /home/libvirt/hd.img root@192.168.2.111:/home/libvirt/hd.img
+4. Virsh test:
+    # virsh migrate --live myvm qemu+ssh://192.168.2.111/system

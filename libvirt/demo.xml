@@ -1,0 +1,35 @@
+<domain type='kvm'>
+<name>myvm</name>
+<memory>512000</memory>
+<vcpu>1</vcpu>
+<os>
+<type arch='x86_64' machine='pc'>hvm</type> <!-- 系统 -->
+<boot dev='hd'/> <!-- 从硬盘启动 -->
+</os>
+<features>
+<acpi/>
+<apic/>
+<pae/>
+</features>
+<clock offset='localtime'/>
+<on_poweroff>destroy</on_poweroff>
+<on_reboot>restart</on_reboot>
+<on_crash>destroy</on_crash>
+<devices>
+<emulator>/usr/libexec/qemu-kvm</emulator>
+<disk type='file' device='disk'>
+<source file='/home/libvirt/a.img'/>
+<target dev='sdb' bus='virtio'/>  <!-- 用sdb -->
+</disk>
+<!--
+<disk type='file' device='cdrom'>
+<driver name='qemu' type='raw'/>
+<source file='/data/instances/myvm/meta.iso'/>
+<target dev='hda' bus='ide'/>
+<readonly/>
+</disk>
+-->
+<input type='mouse' bus='ps2'/>
+<graphics type='vnc' port='-1' autoport='yes' keymap='en-us' listen='0.0.0.0'/> 
+</devices>
+</domain>
