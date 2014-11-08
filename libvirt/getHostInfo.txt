@@ -1,0 +1,2 @@
+yum install python-psutil
+easy_install uptime py-cpuinfo netifaces
