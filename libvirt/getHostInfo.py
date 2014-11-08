@@ -53,7 +53,7 @@ def getHostInfo():
     info["virtualization"] = subprocess.Popen("lscpu | grep 'Virtualization:' | awk -F ':' '{print $2}'", stdin=subprocess.PIPE, stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True).stdout.read().strip()
     info["all_cpu_usage"] = str(psutil.cpu_percent())
     info["physical_memory_size_in_mb"] = str(psutil.virtual_memory()[0]/1024/1024)
-    info["physical_memory_used_in_mb"] = str(psutil.virtual_memory()[0]*psutil.virtual_memory()[2]/1024/1024/100)
+    info["physical_memory_used_in_mb"] = str(int(psutil.virtual_memory()[0]*psutil.virtual_memory()[2]/1024/1024/100))
     info["swap_size_in_mb"] = str(psutil.swap_memory()[0]/1024/1024)
     info["swap_used_in_mb"] = str(psutil.swap_memory()[1]/1024/1024)
     info["networkinfo"] = {}
@@ -62,8 +62,8 @@ def getHostInfo():
     i = 0
     for iface in netifaces.interfaces():
         ifaddress = netifaces.ifaddresses(iface)
-        if iface != "lo0": continue
-        print iface
+        #if iface != "lo0": continue
+        #print iface
         network["name"] = iface
         try:
             network["ip_address"] = ifaddress[2][0]["addr"]
@@ -81,7 +81,6 @@ def getHostInfo():
             #TBD
             cmd = "ifconfig | grep %s | head -n 1 | awk -F 'HWaddr' '{print $2}'" % iface
             network["mac_address"] = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True).stdout.read().strip()
-
         except:
             network["mac_address"] = "null"
         try:
