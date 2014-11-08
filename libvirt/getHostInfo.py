@@ -6,8 +6,6 @@ import psutil
 import subprocess
 import uptime
 
-print psutil.phymem_usage()
-
 def getHostInfo():
     '''
     Use hal-get-property ?
@@ -53,7 +51,7 @@ def getHostInfo():
     info["virtualization"] = subprocess.Popen("lscpu | grep 'Virtualization' | awk -F ':' '{print $2}'",stdin=subprocess.PIPE, stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True).stdout.read().strip()
     info["all_cpu_usage"] = str(psutil.cpu_percent())
     info["physical_memory_size_in_mb"] = str(psutil.virtual_memory()[0]/1024/1024)
-    info["physical_memory_used_in_mb"] = str(psutil.virtual_memory()[3]/1024/1024)
+    info["physical_memory_used_in_mb"] = str(psutil.virtual_memory()[0]*psutil.virtual_memory()[2]/1024/1024/100)
     info["swap_size_in_mb"] = str(psutil.swap_memory()[0]/1024/1024)
     info["swap_used_in_mb"] = str(psutil.swap_memory()[1]/1024/1024)
     info["networkinfo"] = {}

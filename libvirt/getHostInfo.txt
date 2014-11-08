@@ -1,2 +1,2 @@
-yum install python-psutil python-pip gcc python-devel
-easy_install uptime py-cpuinfo netifaces
+yum install pip gcc python-devel
+pip install psutil uptime py-cpuinfo netifaces
