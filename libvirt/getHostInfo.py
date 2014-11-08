@@ -1,10 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 
 import netifaces
 import platform
 import psutil
 import subprocess
 import uptime
+
+print psutil.phymem_usage()
 
 def getHostInfo():
     '''
@@ -35,45 +37,27 @@ def getHostInfo():
     info = {}
 
     info["hostname"] = platform.node()
-
     info["uptime_in_seconds"] = str(uptime.uptime())
-
     info["os_version"] = platform.platform()
-
     #OS_Version = platform.linux_distribution()
-
     info["kernel_version"] = platform.release()
-
     info["kvm_version"] = subprocess.Popen("rpm -qa|grep qemu-kvm|awk -F 'qemu-kvm-' '{print $2}'",stdin=subprocess.PIPE, stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True).stdout.read().strip()
-
     info["spice_version"] = subprocess.Popen("rpm -qa|grep spice-server|awk -F 'spice-server-' '{print $2}'",stdin=subprocess.PIPE, stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True).stdout.read().strip()
-
     # TBD
     info["running_vms"] = subprocess.Popen("ps aux|grep qemu|wc -l",stdin=subprocess.PIPE, stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True).stdout.read().strip()
-
     info["cpu_family"] = platform.processor()
-
     info["cpu_type"]= subprocess.Popen("cat /proc/info | grep 'model name' | head -n 1 | awk -F ':' '{print $2}'",stdin=subprocess.PIPE, stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True).stdout.read().strip()
-
     info["cpu_sockets"] = subprocess.Popen("lscpu | grep 'Socket(s)' | awk -F ':' '{print $2}'",stdin=subprocess.PIPE, stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True).stdout.read().strip()
-
     info["cpu_cores_per_socket"] = subprocess.Popen("lscpu | grep 'per socket' | awk -F ':' '{print $2}'",stdin=subprocess.PIPE, stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True).stdout.read().strip()
-
     info["cpu_threads_per_core"] = subprocess.Popen("lscpu | grep 'per core' | awk -F ':' '{print $2}'",stdin=subprocess.PIPE, stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True).stdout.read().strip()
-
     info["virtualization"] = subprocess.Popen("lscpu | grep 'Virtualization' | awk -F ':' '{print $2}'",stdin=subprocess.PIPE, stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True).stdout.read().strip()
-
     info["all_cpu_usage"] = str(psutil.cpu_percent())
-
-    info["physical_memory_size_in_mb"] = str(psutil.phymem_usage()[0]/1024/1024)
-
-    info["physical_memory_usage_in_mb"] = str(psutil.phymem_usage()[3]/1024/1024)
-
+    info["physical_memory_size_in_mb"] = str(psutil.virtual_memory()[0]/1024/1024)
+    info["physical_memory_used_in_mb"] = str(psutil.virtual_memory()[3]/1024/1024)
     info["swap_size_in_mb"] = str(psutil.swap_memory()[0]/1024/1024)
-
     info["swap_used_in_mb"] = str(psutil.swap_memory()[1]/1024/1024)
-
     info["networkinfo"] = {}
+
     network = {}
     i = 0
     for iface in netifaces.interfaces():
@@ -108,9 +92,7 @@ def getHostInfo():
     #Network_Interface_Bandwidth
     #Network_Interface_Updown
     #Network_Usage
-
     #info["network"] = networkinfo
-
     return info
 
 print getHostInfo()
