@@ -3,24 +3,26 @@
 <memory>512000</memory>
 <vcpu>1</vcpu>
 <os>
-<type arch='x86_64' machine='pc'>hvm</type> <!-- 系统 -->
-<boot dev='hd'/> <!-- 从硬盘启动 -->
+    <type arch='x86_64' machine='pc'>hvm</type>
+    <boot dev='hd'/>
+    <bootmenu enable='yes'>
 </os>
 <features>
-<acpi/>
-<apic/>
-<pae/>
+    <acpi/>
+    <apic/>
+    <pae/>
 </features>
 <clock offset='localtime'/>
 <on_poweroff>destroy</on_poweroff>
 <on_reboot>restart</on_reboot>
 <on_crash>destroy</on_crash>
 <devices>
-<emulator>/usr/libexec/qemu-kvm</emulator>
-<disk type='file' device='disk'>
-<source file='/home/libvirt/a.img'/>
-<target dev='sdb' bus='virtio'/>  <!-- 用sdb -->
-</disk>
+    <emulator>/usr/bin/qemu-kvm</emulator>
+    <disk type='file' device='disk'>
+        <source file='/home/nfs/hda.raw'/>
+        <target dev='sdb' bus='virtio'/>
+        <address type='pci' domain='0x0000' bus='0x00' slot='0x07' function='0x0'/>
+    </disk>
 <!--
 <disk type='file' device='cdrom'>
 <driver name='qemu' type='raw'/>
@@ -29,7 +31,12 @@
 <readonly/>
 </disk>
 -->
-<input type='mouse' bus='ps2'/>
-<graphics type='vnc' port='-1' autoport='yes' keymap='en-us' listen='0.0.0.0'/> 
+    <interface type='bridge'>
+        <source bridge='br0'/>
+        <mac address='00:16:3e:1a:b3:4a'/>
+        <model type='virtio'/>   # try this if you experience problems with VLANs
+    </interface>
+    <input type='mouse' bus='ps2'/>
+    <graphics type='spice' autoport='yes' listen='0.0.0.0'/> 
 </devices>
 </domain>
