@@ -1,0 +1,16 @@
+# cat > ifcfg-eth0 <<EOF
+DEVICE=eth0
+HWADDR=00:16:76:D6:C9:45
+ONBOOT=yes
+BRIDGE=br0
+NM_CONTROLLED=no
+EOF
+
+# cat > ifcfg-br0 <<EOF
+DEVICE=br0
+TYPE=Bridge
+BOOTPROTO=dhcp
+ONBOOT=yes
+DELAY=0
+NM_CONTROLLED=no
+EOF
