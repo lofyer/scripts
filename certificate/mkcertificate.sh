@@ -14,3 +14,4 @@ echo "*****Generating your self crt*****"
 openssl req -new -x509 -days 3650 -key server.key -out server-self.crt
 
 cat server.crt server.key > certificate.pem
+# openssl rsa -in ssl.key -out ssl-decrypt.key
