@@ -27,9 +27,11 @@ source /etc/profile
 echo "127.0.0.1 rex.lofyer.org rex localhost localhost.localdomain" > /etc/hosts
 echo 'HOSTNAME="rex"' > /etc/hostname
 cat >> /etc/portage/make.conf << EOF_MAKE
-GENTOO_MIRRORS=""
+GENTOO_MIRRORS="http://mirrors.yun-idc.com/gentoo/"
 FETCH_COMMAND=""
 RESUME_COMMAND=""
 LINGUAS="zh_CN"
 EOF_MAKE
 EOF
+
+emerge udev
