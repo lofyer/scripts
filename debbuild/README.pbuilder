@@ -1,0 +1,4 @@
+apt-get source htop
+apt-get build-dep htop
+cd htop_1.2-1
+debuild -i -us -uc -b
