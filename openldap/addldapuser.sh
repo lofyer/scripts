@@ -32,6 +32,7 @@ objectClass: top
 userPassword: $PASSWORD
 uidNumber: $LUID
 gidNumber: 501
+givenName: $PASSWORD
 homeDirectory: /home/users/$USERNAME
 add-user
 ) > /root/adduser.ldif
