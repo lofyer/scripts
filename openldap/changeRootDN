@@ -1,0 +1,4 @@
+dn: olcDatabase={1}hdb,cn=config
+replace: olcRootPW
+olcRootPW: {SHA}W6ph5Mm5Pz8GgiULbPgzG37mj9g=
+modifying entry "olcDatabase={1}hdb,cn=config"
