@@ -5,9 +5,9 @@ from time import sleep
 import subprocess
 import sys
 
-if len(sys.argv) < 5:
+if len(sys.argv) < 6:
     print "Usage: "
-    print "./setup-localdc.py adminpassword ipaddress netmask gateway"
+    print "./setup-localdc.py adminpassword rootpassword ipaddress netmask gateway"
     exit(1)
 
 USERNAME = 'admin@internal'
@@ -21,12 +21,12 @@ VERSION = params.Version(major='3', minor='4')
 # Host info
 HOST_NAME = 'IAM_Local'
 HOST_ADDRESS = 'localhost'
-ROOT_PASSWORD = '123456'
+ROOT_PASSWORD = sys.argv[2]
 ETH = 'eth0'
 # ovirtmgmt info
-IP_ADDRESS = sys.argv[2]
-IP_NETMASK = sys.argv[3]
-IP_GATEWAY = sys.argv[4]
+IP_ADDRESS = sys.argv[3]
+IP_NETMASK = sys.argv[4]
+IP_GATEWAY = sys.argv[5]
 # Data domain
 DATA_PATH = '/home/vdsm/data'
 DATA_NAME = 'LocalData'
