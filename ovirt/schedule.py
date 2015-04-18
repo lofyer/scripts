@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- 
+
+# You can use vm.shutdown() to send ACPI_DOWN to vm or vm.stop() to poweroff it
+
 from ovirtsdk.api import API
 from ovirtsdk.xml import params
 import time
@@ -42,23 +45,34 @@ except Exception as e:
 
 # Version 1
 def shutdown(name, start_time, shutdown_time):
-    for i in len(names):
-        list_count = len(api.vms.list(query=names[i-1]))
-        for j in range(1, list_count+1):
-            name = names[i-1] + str(i)
-            vm = api.vms.list(query=name)
-            vm.stop()
+    list_count = len(api.vms.list(query=names[i-1]))
+    for j in range(1, list_count+1):
+        name = names[i-1] + str(i)
+        vm = api.vms.list(query=name)
+        vm.stop()
 
 # Version 2
 def shutdown(name, start_time, shutdown_time):
     for i in len(names):
-        name = names[i-1] + str(i)
+        name = name + "-"
         for vm in api.vms.list(query=name)
             vm.stop()
 
 def start(name, start_time, shutdown_time):
+    list_count = len(api.vms.list(query=names[i-1]))
+    for j in range(1, list_count+1):
+        name = names[i-1] + str(i)
+        vm = api.vms.list(query=name)
+        vm.start()
 
-for i in range(len(names)):
-    if(current_time <= start_times[i]):
-        print "now shutdown."
-	start(names[i], start_times[i], shutdown_times[i])
+try:
+    for i in range(len(names)):
+     if(current_time = shutdown_times[i]):
+         print "now shutdown."
+    	 shutdown(names[i], start_times[i], shutdown_times[i])
+     if(current_time = start_times[i]):
+         print "now shutdown."
+    	 start(names[i], start_times[i], start_times[i])
+     exit(0)
+except Exception as e:
+    print e
