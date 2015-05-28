@@ -21,3 +21,6 @@ ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif
 ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
 ldapadd -Y EXTERNAL -H ldapi:/// -f ./backend.ldif
 ldapadd -x -D cn=admin,dc=example,dc=com -W -f frontend.ldif
+
+# Change openldapphp
+

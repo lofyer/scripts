@@ -14,7 +14,7 @@ olcDatabase: {1}hdb
 olcSuffix: dc=example,dc=com
 olcDbDirectory: /var/lib/ldap
 olcRootDN: cn=admin,dc=example,dc=com
-olcRootPW: {SSHA}u2roXlfENs0vXH3nzIXBfNll6Q3ZQ3iL
+olcRootPW: {SSHA}BIWLvzvQyLgrtoU367SGX6yHxMdQZo7c
 olcDbConfig: set_cachesize 0 2097152 0
 olcDbConfig: set_lk_max_objects 1500
 olcDbConfig: set_lk_max_locks 1500

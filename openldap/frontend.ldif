@@ -12,7 +12,7 @@ dn: cn=admin,dc=example,dc=com
 objectClass: simpleSecurityObject
 objectClass: organizationalRole
 cn: admin
-userPassword: {SSHA}u2roXlfENs0vXH3nzIXBfNll6Q3ZQ3iL
+userPassword: {SSHA}BIWLvzvQyLgrtoU367SGX6yHxMdQZo7c
 
 dn: ou=Users,dc=example,dc=com
 objectClass: organizationalUnit
