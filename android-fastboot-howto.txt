@@ -1,0 +1,11 @@
+adb reboot bootloader
+fastboot oem unlock
+fastboot flash bootloader bootloader.img
+fastboot flash radio radio.img
+fastboot reboot-bootloader
+fastboot flash recovery recovery.img
+fastboot flash boot boot.img
+fastboot flash system system.img
+fastboot flash userdata userdata.img
+adb reboot bootloader
+fastboot oem lock
