@@ -1,6 +1,5 @@
 # cat > ifcfg-eth0 <<EOF
 DEVICE=eth0
-HWADDR=00:16:76:D6:C9:45
 ONBOOT=yes
 BRIDGE=br0
 NM_CONTROLLED=no
