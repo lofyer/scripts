@@ -1,0 +1,11 @@
+#!/bin/bash
+yum -y install wget openssl-devel kernel-devel
+yum groupinstall "Development Tools"
+wget http://openvswitch.org/releases/openvswitch-2.3.2.tar.gz
+tar xf openvswitch-2.3.2.tar.gz
+cd openvswitch/
+sed 's/openvswitch-kmod, //g' rhel/openvswitch.spec > rhel/openvswitch_no_kmod.spec
+make dist
+mkdir -p ~/rpmbuild/SOURCES
+cp openvswitch-2.3.2.tar.gz ~/rpmbuild/SOURCES
+rpmbuild -bb rhel/openvswitch_no_kmod.spec
