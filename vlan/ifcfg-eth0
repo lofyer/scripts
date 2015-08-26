@@ -1,0 +1,4 @@
+DEVICE=eth0
+TYPE=Ethernet
+BOOTPROTO=none
+ONBOOT=yes
