@@ -1,17 +1,11 @@
-<!--
-注释掉forward段禁止外网，否则请启用ip_forward打开外网
--->
 <network>
-  <name>default</name>
-  <uuid>9ae70077-ba76-4837-859d-2acd58024e73</uuid>
-  <forward dev='mgmtnet' mode='nat'>
-    <interface dev='mgmtnet'/>
-  </forward>
-  <bridge name='virbr0' stp='on' delay='0'/>
-  <mac address='52:54:00:e5:eb:1e'/>
-  <ip address='192.168.122.1' netmask='255.255.255.0'>
-    <dhcp>
-      <range start='192.168.122.2' end='192.168.122.254'/>
-    </dhcp>
-  </ip>
+<name>nat</name>
+<forward mode='nat'/>
+<bridge name='virbr1' stp='on' delay='0' />
+<mac address='52:54:00:0C:A9:C4'/>
+<ip address='192.168.122.1' netmask='255.255.255.0'>
+<dhcp>
+<range start='192.168.122.128' end='192.168.100.122' />
+</dhcp>
+</ip>
 </network>
