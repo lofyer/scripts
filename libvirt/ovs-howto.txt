@@ -1,0 +1,57 @@
+1. Install openvswitch
+http://mirrors.lofyer.org
+
+2. Start ovs services
+chkconfig ovsdb-server on
+chkconfig ovs-vswitchd on
+service ovsdb-server start
+service ovs-vswitchd start
+
+3. Add switch(bridge)
+$ ovs-vsctl add-br ovs-br0
+$ ifconfig ovs-br0 192.168.1.254 netmask 255.255.255.0 up
+    (OPTIONAL)3.1. If you need export ovs-net to other hosts.
+    $ ovs-vsctl add-port eth1
+    And connect eth1 to the physical switch or host.
+
+4. Replace "default" in ext-net.py with ovs-br0 so that we can bridge the VM network to the ovs-br0
+
+5. Run dnsmasq.sh to enable dhcp
+#!/bin/bash
+/usr/sbin/dnsmasq --strict-order --pid-file=/var/run/libvirt/network/ovs-br0--conf-file= --except-interface lo --bind-interfaces ovs-br0 --listen 192.168.1.254 --dhcp-range 192.168.1.100,192.168.1.253 --dhcp-leasefile=/var/lib/libvirt/dnsmasq/ovs-br0.leases --dhcp-lease-max=253 --dhcp-no-override --dhcp-hostsfile=/var/lib/libvirt/dnsmasq/ovs-br0.hostsfile --addn-hosts=/var/lib/libvirt/dnsmasq/ovs-br0.addnhosts
+    (OPTIONAL)5.1. VM access WAN
+    # iptables -t nat -A POSTROUTING -o mgmtnet -j MASQUERADE
+
+6. Start VM
+
+Ref:
+
+Add route table:
+# route add -net 192.168.1.0 netmask 255.255.255.0 gw 192.168.1.254 dev ovs-br0
+
+Linux host :
+[root@localhost ~]# route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+192.168.1.0     0.0.0.0         255.255.255.0   U     0      0        0 ovs-br0
+192.168.0.0     0.0.0.0         255.255.255.0   U     0      0        0 bridge0
+169.254.0.0     0.0.0.0         255.255.0.0     U     1005   0        0 bridge0
+0.0.0.0         192.168.0.1     0.0.0.0         UG    0      0        0 bridge0
+
+[root@localhost ~]# iptables -t nat -L
+Chain PREROUTING (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain POSTROUTING (policy ACCEPT)
+target     prot opt source               destination         
+MASQUERADE  all  --  anywhere             anywhere            
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination
+
+Linux guest route:
+[root@livecd ~]# route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+192.168.1.0     0.0.0.0         255.255.255.0   U     1      0        0 eth0
+0.0.0.0         192.168.1.254   0.0.0.0         UG    0      0        0 eth0
