@@ -2,10 +2,8 @@
 http://mirrors.lofyer.org
 
 2. Start ovs services
-chkconfig ovsdb-server on
-chkconfig ovs-vswitchd on
-service ovsdb-server start
-service ovs-vswitchd start
+chkconfig openvswitch on
+service openvswitch start
 
 3. Add switch(bridge)
 $ ovs-vsctl add-br ovs-br0
@@ -14,7 +12,16 @@ $ ifconfig ovs-br0 192.168.1.254 netmask 255.255.255.0 up
     $ ovs-vsctl add-port eth1
     And connect eth1 to the physical switch or host.
 
-4. Replace "default" in ext-net.py with ovs-br0 so that we can bridge the VM network to the ovs-br0
+4.1. Use ovs-net
+# virsh net-create ovs-net.xml 
+<network>
+  <name>ovs-net</name>
+  <forward mode='bridge'/>
+  <bridge name='ovs-br0' />
+  <virtualport type='openvswitch'/>
+</network>
+
+Replace "default" in ext-net.py with "ovs-net" so that we can bridge the VM network to the ovs-br0
 
 5. Run dnsmasq.sh to enable dhcp
 #!/bin/bash
