@@ -1,0 +1,4 @@
+# su postgres
+postgres$ update images
+postgres$ set imagestatus=1
+postgres$ where imagestatus=2;
