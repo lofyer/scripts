@@ -1,7 +1,12 @@
+0. Preparation
+host0: 192.168.0.199
+host1: 192.168.0.200
+host2: 192.168.0.201
+
 1. Install openvswitch
 http://mirrors.lofyer.org
 
-2. Start ovs services
+2. Start ovs services on each host
 chkconfig openvswitch on
 service openvswitch start
 
@@ -11,8 +16,15 @@ $ ifconfig ovs-br0 192.168.1.254 netmask 255.255.255.0 up
     (OPTIONAL)3.1. If you need export ovs-net to other hosts.
     $ ovs-vsctl add-port eth1
     And connect eth1 to the physical switch or host.
-    (OPTIONAL)3.2. If you need multihost with ovs, add gre port on each hosts'ovs-br0, remote_ip=main_ovs_server_ip
-    $ ovs-vsctl add-port ovs-br0 gre0 -- set interface gre0 type=gre options:remote_ip=192.168.0.200
+    (OPTIONAL)3.2. If you need multihost with ovs, add gre port on each hosts'ovs-br0, remote_ip=another_host_eth0_ip
+    host0:
+    # ovs-vsctl add-port ovs-br0 gre0 -- set interface gre0 type=gre options:remote_ip=192.168.0.200
+    # ovs-vsctl add-port ovs-br0 gre1 -- set interface gre1 type=gre options:remote_ip=192.168.0.201
+    On other hosts, add a gre port pointing to host0:
+    host1:
+    # ovs-vsctl add-port ovs-br0 gre0 -- set interface gre0 type=gre options:remote_ip=192.168.0.199
+    host2:
+    # ovs-vsctl add-port ovs-br0 gre0 -- set interface gre0 type=gre options:remote_ip=192.168.0.199
 
 4.1. Use ovs-net
 # virsh net-create ovs-net.xml 
@@ -27,14 +39,19 @@ Replace "default" in ext-net.py with "ovs-net" so that we can bridge the VM netw
 
 5. Run dnsmasq.sh to enable dhcp
 #!/bin/bash
-/usr/sbin/dnsmasq --strict-order --pid-file=/var/run/libvirt/network/ovs-br0--conf-file= --except-interface lo --bind-interfaces ovs-br0 --listen 192.168.1.254 --dhcp-range 192.168.1.100,192.168.1.253 --dhcp-leasefile=/var/lib/libvirt/dnsmasq/ovs-br0.leases --dhcp-lease-max=253 --dhcp-no-override --dhcp-hostsfile=/var/lib/libvirt/dnsmasq/ovs-br0.hostsfile --addn-hosts=/var/lib/libvirt/dnsmasq/ovs-br0.addnhosts
+/usr/sbin/dnsmasq --strict-order --pid-file=/var/run/libvirt/network/ovs-br0 --conf-file= --except-interface=lo --bind-interfaces --interface=ovs-br0 --listen 192.168.1.1 --dhcp-range 192.168.1.100,192.168.1.253 --dhcp-leasefile=/var/lib/libvirt/dnsmasq/ovs-br0.leases --dhcp-lease-max=253 --dhcp-no-override --dhcp-hostsfile=/var/lib/libvirt/dnsmasq/ovs-br0.hostsfile --addn-hosts=/var/lib/libvirt/dnsmasq/ovs-br0.addnhosts
+
     (OPTIONAL)5.1. VM access WAN
+    On host0:
+    # echo 1 > /proc/sys/net/ipv4/ip_forward
+
     # iptables -t nat -A POSTROUTING -o mgmtnet -j MASQUERADE
+    Or
+    # iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o ovirtmgmt -j SNAT --to-source 192.168.0.199
 
 6. Start VM
 
-Ref:
-
+7. Ref:
 Add route table:
 # route add -net 192.168.1.0 netmask 255.255.255.0 gw 192.168.1.254 dev ovs-br0
 
