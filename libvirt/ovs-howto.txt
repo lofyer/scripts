@@ -11,6 +11,8 @@ $ ifconfig ovs-br0 192.168.1.254 netmask 255.255.255.0 up
     (OPTIONAL)3.1. If you need export ovs-net to other hosts.
     $ ovs-vsctl add-port eth1
     And connect eth1 to the physical switch or host.
+    (OPTIONAL)3.2. If you need multihost with ovs, add gre port on each hosts'ovs-br0, remote_ip=main_ovs_server_ip
+    $ ovs-vsctl add-port ovs-br0 gre0 -- set interface gre0 type=gre options:remote_ip=192.168.0.200
 
 4.1. Use ovs-net
 # virsh net-create ovs-net.xml 
