@@ -1,0 +1,1 @@
+/etc/pki/vdsm/keys/libvirt_password
