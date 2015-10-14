@@ -42,6 +42,22 @@ Replace "default" in ext-net.py with "ovs-net" so that we can bridge the VM netw
 5. Run dnsmasq.sh to enable dhcp
 #!/bin/bash
 /usr/sbin/dnsmasq --strict-order --pid-file=/var/run/libvirt/network/ovs-br0 --conf-file= --except-interface=lo --bind-interfaces --interface=ovs-br0 --listen 192.168.1.1 --dhcp-range 192.168.1.100,192.168.1.253 --dhcp-leasefile=/var/lib/libvirt/dnsmasq/ovs-br0.leases --dhcp-lease-max=253 --dhcp-no-override --dhcp-hostsfile=/var/lib/libvirt/dnsmasq/ovs-br0.hostsfile --addn-hosts=/var/lib/libvirt/dnsmasq/ovs-br0.addnhosts
+or
+# vi /etc/dnsmasq.d/ovs-br0.conf
+strict-order
+pid-file=/var/run/libvirt/network/ovs-br
+conf-file=
+except-interface=lo
+bind-interfaces
+interface=ovs-br
+listen-address=192.168.1.1
+dhcp-range=192.168.1.100,192.168.1.253
+dhcp-leasefile=/var/lib/libvirt/dnsmasq/ovs-br.leases
+dhcp-lease-max=253
+dhcp-no-override
+dhcp-hostsfile=/var/lib/libvirt/dnsmasq/ovs-br.hostsfile
+addn-hosts=/var/lib/libvirt/dnsmasq/ovs-br.addnhosts
+# service dnsmasq restart
 
     (OPTIONAL)5.1. VM access WAN
     On host0:
