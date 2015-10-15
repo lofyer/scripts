@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/sbin/dnsmasq --strict-order --pid-file=/var/run/libvirt/network/ovs-br0 --conf-file= --except-interface=lo --bind-interfaces --interface=ovs-br0 --listen 192.168.1.1 --dhcp-range 192.168.1.100,192.168.1.253 --dhcp-leasefile=/var/lib/libvirt/dnsmasq/ovs-br0.leases --dhcp-lease-max=253 --dhcp-no-override --dhcp-hostsfile=/var/lib/libvirt/dnsmasq/ovs-br0.hostsfile --addn-hosts=/var/lib/libvirt/dnsmasq/ovs-br0.addnhosts
