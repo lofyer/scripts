@@ -14,11 +14,15 @@ except Exception as e:
 def set_stateless(name):
     list_count = len(api.vms.list(query=name))
     for j in range(1, 25):
-        vm_name = name + str(j)
-        vm = api.vms.get(name=vm_name)
-        vm.set_stateless(True)
-        vm.update()
-        print "Set vm %s" % vm_name
+        try:
+            vm_name = name + str(j)
+            vm = api.vms.get(name=vm_name)
+            vm.set_delete_protected(False)
+            vm.update()
+            print "Set vm %s" % vm_name
+        except Exception as e:
+            print e
 
 set_stateless("win7-11-")
+#set_stateless("win7-11-25-")
 set_stateless("win7-12-")
