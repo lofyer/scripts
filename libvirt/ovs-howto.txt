@@ -62,6 +62,7 @@ addn-hosts=/var/lib/libvirt/dnsmasq/ovs-br.addnhosts
     (OPTIONAL)5.1. VM access WAN
     On host0:
     # echo 1 > /proc/sys/net/ipv4/ip_forward
+    # echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.d/vdsm.conf
 
     # iptables -t nat -A POSTROUTING -o mgmtnet -j MASQUERADE
     Or

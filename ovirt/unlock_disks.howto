@@ -1,4 +1,5 @@
 # su postgres
-postgres$ update images
-postgres$ set imagestatus=1
-postgres$ where imagestatus=2;
+psql engine
+engine$ update images
+engine$ set imagestatus=1
+engine$ where imagestatus=2;
