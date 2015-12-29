@@ -42,12 +42,17 @@ ext_string="""
 def main():
     #newnet = os.environ.get('extnet')
     doc = hooking.read_domxml()
+    uuid = doc.getElementsByTagName('uuid')[0]
+    UUID = uuid.childNodes[0].nodeValue
+    if UUID == "f60cba97-e09f-4515-bdef-a7af3d93e6e5":
+        pass
+    else:
+        return 0
     devices_dom = doc.getElementsByTagName("devices")[0]
     ext_dom = minidom.parseString(ext_string)
     ext_elements = ext_dom.getElementsByTagName("hostdev")[0]
     devices_dom.appendChild(ext_elements)
     hooking.write_domxml(doc)
-
 
 if __name__ == '__main__':
     try:
