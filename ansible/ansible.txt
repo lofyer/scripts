@@ -1,0 +1,205 @@
+一. 简介
+    ansible是以ssh为通信方式的批量管理软件，它的基本方法是将命令组合为模块（module），
+    主机作为资产（inventory）。
+    - 1.3版本以后支持加速模式（UDP）；
+    - 官方的ansible tower提供web管理方式；
+    - 提供python API；
+    - 提供ansible-pull命令提供配置文件git统一保存；
+
+二. 基本使用
+    配置文件，配置文件的具体参数参考http://docs.ansible.com/ansible/intro_configuration.html:
+        /etc/ansible/ansible.cfg
+        ~/.ansible.cfg
+        /etc/ansible/hosts
+
+    1. 使用ansible的第一步是在主管理节点创建公钥，然后将生成的公钥拷贝到被管理机：
+        $ ssh-keygen -t rsa
+        $ ssh-copy-id root@192.168.0.80
+        $ ssh-copy-id root@192.168.0.81
+    2. 被管理机一般存在于/etc/ansible/hosts下，也可以使用ansible -i指定主机列表文件，
+    列表文件支持正则表达式或者脚本文件，参考http://docs.ansible.com/ansible/intro_inventory.html，
+    以及表达式http://docs.ansible.com/ansible/intro_patterns.html。
+        $ cat /etc/ansible/hosts
+        192.168.0.80
+        [web]
+        192.168.0.81 ansible_connection=ssh ansible_user=root
+        [cluster]
+        192.168.0.90 ansible_connection=ssh ansible_user=root
+        192.168.0.91 ansible_connection=ssh ansible_user=root
+
+    3. 简单使用
+        使用ping模块检查机器，未在hosts中指定user字段的话，我们需要在命令中加入参数-u
+        以指定执行命令的用户：
+        $ ansible all -u root -m ping
+        如果不使用模块，我们也直接使用参数选项-a：
+        $ ansible all -u root -a "/bin/echo hello"
+        sudo为root
+        $ ansible all -u demo -b -m ping
+        sudo为nemo
+        $ ansible all -u demo -b --become-user nemo -m ping
+
+    4. 入门注意事项：
+        假如某台机器由于意外变成了我们列表中的主机，比如重装，那么它的公钥就改变了，
+        我们只要重新输入一下"yes"就会继续执行命令了，而这种行为可能会造成意外发生。
+        默认情况下，主机公钥检查是打开的，即如果被管理机的公钥改变，就不会在其上继续执行命令，
+        可通过修改ansible.cfg中的字段来开启或关闭此特性。
+        [defaults]
+        host_key_checking = False
+
+三. 管理多种资产（主机）
+    由于主机列表文件可以是一个脚本，那我们就可以使用它去管理各种样的主机了。
+    比如它可以配合cobbler——另一种开源的批量部署维护软件，也可以管理AWS/EC2/OpenStack的主机。
+    细节参考http://docs.ansible.com/ansible/intro_dynamic_inventory.html。
+
+四. 即时（ad-hoc）命令
+    即时命令可以理解成希望立即返回结果的命令。
+
+    重启：
+    $ ansible all -u root -a "/sbin/reboot"
+
+    文件传输，file模块可以加入参数state=directory|absent，即创建目录或删除
+    $ ansible all -m file -a "dest=/tmp/a.txt mode=600 owner=demo group=demo"
+
+    包管理，yum模块可以加入参数state=present|lastest|absent，即安装、升级、卸载
+    $ ansible all -m yum -a "name=htop state=latest"
+
+五、编写模块与Playbook
+    模块是ansible的基本元素，它是一系列主机命令的组合。官方提供的模块与功能可以查询
+    http://docs.ansible.com/ansible/modules_by_category.html。编写模块时需注意，
+    模块的返回一定是json格式。
+
+    编写流程，参考http://docs.ansible.com/ansible/developing_modules.html：
+
+    1. 编写脚本
+    $ cat mod-date.py
+    #!/usr/bin/python
+    import datetime
+    import json
+    date = str(datetime.datetime.now())
+    print json.dumps({
+        "time" : date
+    })
+
+    2. 测试脚本
+    需要下载测试环境文件
+    $ git clone git://github.com/ansible/ansible.git --recursive
+    $ source ansible/hacking/env-setup
+    $ chmod +x ansible/hacking/test-module
+    $ ./ansible/hacking/test-module -m ./mod-test.py
+
+    3. 添加参数
+    $ cat mod-date.py
+    #!/usr/bin/python
+
+    # import some python modules that we'll use.  These are all
+    # available in Python's core
+
+    import datetime
+    import sys
+    import json
+    import os
+    import shlex
+
+    # read the argument string from the arguments file
+    args_file = sys.argv[1]
+    args_data = file(args_file).read()
+
+    # for this module, we're going to do key=value style arguments
+    # this is up to each module to decide what it wants, but all
+    # core modules besides 'command' and 'shell' take key=value
+    # so this is highly recommended
+
+    arguments = shlex.split(args_data)
+    for arg in arguments:
+
+        # ignore any arguments without an equals in it
+        if "=" in arg:
+            (key, value) = arg.split("=")
+
+        # if setting the time, the key 'time'
+        # will contain the value we want to set the time to
+
+        if key == "time":
+            # now we'll affect the change.  Many modules
+            # will strive to be 'idempotent', meaning they
+            # will only make changes when the desired state
+            # expressed to the module does not match
+            # the current state.  Look at 'service'
+            # or 'yum' in the main git tree for an example
+            # of how that might look.
+            rc = os.system("date -s \"%s\"" % value)
+            # always handle all possible errors
+            #
+            # when returning a failure, include 'failed'
+            # in the return data, and explain the failure
+            # in 'msg'.  Both of these conventions are
+            # required however additional keys and values
+            # can be added.
+
+            if rc != 0:
+                print json.dumps({
+                    "failed" : True,
+                    "msg"    : "failed setting the time"
+                })
+                sys.exit(1)
+
+            # when things do not fail, we do not
+            # have any restrictions on what kinds of
+            # data are returned, but it's always a
+            # good idea to include whether or not
+            # a change was made, as that will allow
+            # notifiers to be used in playbooks.
+
+            date = str(datetime.datetime.now())
+            print json.dumps({
+                "time" : date,
+                "changed" : True
+            })
+            sys.exit(0)
+
+    # if no parameters are sent, the module may or
+    # may not error out, this one will just
+    # return the time
+
+    date = str(datetime.datetime.now())
+    print json.dumps({
+        "time" : date
+    })
+
+    4. 使用
+    将mod-date.py文件拷贝至ansible-module-path下
+
+    Playbook是使用YAML语法的模块（命令）脚本，使用如下：
+    $ cat test.yml
+    ---
+    - hosts: webservers
+      vars:
+        http_port: 80
+        max_clients: 200
+      remote_user: root
+      tasks:
+      - name: ensure apache is at the latest version
+        yum: name=httpd state=latest
+      - name: write the apache config file
+        template: src=/srv/httpd.j2 dest=/etc/httpd.conf
+        notify:
+        - restart apache
+      - name: ensure apache is running (and enable it at boot)
+        service: name=httpd state=started enabled=yes
+      handlers:
+        - name: restart apache
+          service: name=httpd state=restarted
+
+    执行playbook
+    $ ansible-playbook test.yml
+
+六. 文档查询
+
+    列出所有模块：
+    $ ansible-doc -l
+
+    查询某个模块的文档：
+    $ ansible-doc file
+
+Ref:
+[ansible documentation]: http://docs.ansible.com/ansible/
