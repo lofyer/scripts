@@ -18,7 +18,8 @@ App list:
     RDP
 
 Homebrew/pip list:
-    TigerVNC
+    ReadVNC vncviewer
+    axel
 
     IPython
     Matplotlib
