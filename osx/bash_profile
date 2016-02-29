@@ -3,7 +3,8 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 # For brew
 alias curl='curl --insecure'
 alias htop='sudo htop'
-alias vncviewer='/opt/homebrew-cask/Caskroom/tigervnc-viewer/1.4.3/TigerVNC\ Viewer\ 1.4.3.app/Contents/MacOS/TigerVNC\ Viewer'
-alias remote-viewer='/Applications/RemoteViewer.app/Contents/MacOS/RemoteViewer'
+alias l='ls -hil'
 alias mongod-start='mongod --config /usr/local/etc/mongod.conf'
+alias remote-viewer='/Applications/RemoteViewer.app/Contents/MacOS/RemoteViewer'
+alias vncviewer='/opt/homebrew-cask/Caskroom/tigervnc-viewer/1.4.3/TigerVNC\ Viewer\ 1.4.3.app/Contents/MacOS/TigerVNC\ Viewer'
 export PATH=$PATH:/Applications/TeX//TeXShop.app/Contents/Resources/TeXShop/bin
