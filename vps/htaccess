@@ -1,5 +1,0 @@
-RewriteEngine on 
-RewriteCond %{HTTP_HOST} !^*.lofyer.org [NC] 
-RewriteCond %{HTTP_HOST} !^www.lofyer.org [NC] 
-RewriteCond %{HTTP_HOST} !^lofyer.org [NC] 
-RewriteRule (.*) http://127.0.0.1 [R=301,L]
