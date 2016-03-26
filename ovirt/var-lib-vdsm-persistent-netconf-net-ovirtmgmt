@@ -1,0 +1,3 @@
+# 对于网络配置重启未保存的情况
+/var/lib/vdsm/persistent/netconf/nets/mgmtnet
+{"bondingOptions": "mode=4 miimon=100", "vlan": "212", "ipaddr": "10.25.21.71", "netmask": "255.255.255.192", "mtu": "1500", "bonding": "bond0", "STP": "no", "bridged": "true", "gateway": "10.25.21.126", "defaultRoute": true}[
