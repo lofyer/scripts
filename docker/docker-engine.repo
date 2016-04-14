@@ -1,0 +1,5 @@
+[docker-engine]
+name=Extra Packages for Enterprise Linux 7 - $basearch
+baseurl=http://mirrors.aliyun.com/docker-engine/yum/main/centos/7/
+enabled=1
+gpgcheck=0
