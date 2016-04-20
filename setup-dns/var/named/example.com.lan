@@ -1,0 +1,18 @@
+$TTL 86400
+@   IN  SOA     dns.example.com. root.example.com. (
+# update serial
+        2014071002  ;Serial
+        3600        ;Refresh
+        1800        ;Retry
+        604800      ;Expire
+        86400       ;Minimum TTL
+)
+        IN  NS      dns.example.com.
+        IN  A       192.168.0.253
+        IN  MX 10   dns.example.com.
+
+dns     IN  A       192.168.0.253
+; [ aliase IN CNAME server's name ]
+ftp     IN  CNAME   dns.example.com.
+; wildchar
+*.cloudapps IN A    192.168.0.45

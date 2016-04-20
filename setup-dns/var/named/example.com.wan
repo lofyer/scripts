@@ -1,0 +1,17 @@
+$TTL 86400
+@   IN  SOA     dns.example.com. root.example.com. (
+        2014071001  ;Serial
+        3600        ;Refresh
+        1800        ;Retry
+        604800      ;Expire
+        86400       ;Minimum TTL
+)
+; define name server
+        IN  NS      dns.example.com.
+; external IP address of name server
+        IN  A       101.86.157.7
+; define Mail exchanger
+        IN  MX 10   dns.example.com.
+
+; define IP address and hostname
+dns     IN  A       101.86.157.7

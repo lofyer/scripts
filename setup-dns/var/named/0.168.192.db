@@ -1,0 +1,17 @@
+$TTL 86400
+@   IN  SOA     dns.example.com. root.example.com. (
+        2014071001  ;Serial
+        3600        ;Refresh
+        1800        ;Retry
+        604800      ;Expire
+        86400       ;Minimum TTL
+)
+; define name server
+        IN  NS      dns.example.com.
+
+; define the range of this domain included
+        IN  PTR     example.com.
+        IN  A       255.255.255.0
+
+; define hostname of an IP address
+30      IN  PTR     dns.example.com.
