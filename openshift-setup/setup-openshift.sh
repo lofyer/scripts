@@ -34,7 +34,20 @@ ansible-playbook playbooks/byo/openshift_facts.yml
 #ansible-playbook playbooks/byo/config.yml
 # Uninstall
 #ansible-playbook [-i /path/to/file] playbooks/adhoc/uninstall.yml
-
+oc login system:admin
 # Setup Registry
-
+oc create serviceaccount registry -n default
+oadm policy add-scc-to-user privileged system:serviceaccount:default:registry
+oadm registry --service-account=registry \
+    --config=admin.kubeconfig \
+    --credentials=openshift-registry.kubeconfig \
+    --mount-host=<path>
 # Setup Route
+oc create serviceaccount router -n default
+oadm policy add-scc-to-user privileged system:serviceaccount:default:router
+oadm router region-west --replicas=2 \
+    --credentials=${ROUTER_KUBECONFIG:-"$KUBECONFIG"} \
+    --service-account=router
+oadm router region-default --replicas=2 \
+    --credentials=${ROUTER_KUBECONFIG:-"$KUBECONFIG"} \
+    --service-account=router
