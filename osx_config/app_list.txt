@@ -11,3 +11,4 @@ see https://github.com/Homebrew/homebrew/wiki/FAQ
 axel: axel -a -n 5 http://a.b.com/a.tar.bz2
 htop: sudo htop
 nmap: namp localhost
+Old terminal: Caskroom/cask/cool-retro-term and Caskroom/cask/cathode
