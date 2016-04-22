@@ -1,6 +1,6 @@
 $TTL 86400
 @   IN  SOA     dns.example.com. root.example.com. (
-# update serial
+; update serial
         2014071002  ;Serial
         3600        ;Refresh
         1800        ;Retry
