@@ -1,0 +1,26 @@
+1. iRedAdmin
+
+    Install iRedAdmin, choose [iRedAdmin, SOGo, fail2ban].
+    Add "ServerName" in /etc/apache2/sites-enabled/default-ssl.conf
+    Restore php.ini
+    
+    Comment check_policyXXX in smtpd_recipient_restrictions to enable QQ, 163...
+
+Ref:
+    For full ref: http://www.iredmail.com/docs/index.html
+    
+    Attachment size: http://www.iredmail.com/docs/change.mail.attachment.size.html
+
+    Disable amavis/clamav: http://www.iredmail.com/docs/completely.disable.amavisd.clamav.spamassassin.html
+    Comment below in /etc/amavis/conf.d/50-user:
+    #@bypass_virus_checks_maps = (
+    #   \%bypass_virus_checks, \@bypass_virus_checks_acl, \$bypass_virus_checks_re);
+    update-rc.d -f clamav-daemon remove
+    update-rc.d -f clamav-freshclam remove
+    
+    SMTPS: http://www.iredmail.com/docs/enable.smtps.html
+
+2. Install Rainloop.
+    Add VirtualHost in /etc/apache2/conf-enabled/rainloop.conf
+    User Portal: http://FQDN/
+    Admin Portal: http://FQDN/?admin
