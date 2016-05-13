@@ -1,3 +1,20 @@
-socat -d -d pty,link=/dev/CUSTOMNAME,raw,echo=0,waitslave tcp:192.168.x.x:yyyy;
-socat pty,link=$HOME/dev/ttyV0,waitslave tcp:SerialMachine:3333
+Port: /dev/lp0 /dev/ttyS0
+Server[192.168.0.40]: ser2net -C 12345:rawlp:0:/dev/lp0 [-n #foreground]
+Server[192.168.0.40]: ser2net -C 12344:raw:0:/dev/ttyS0 [-n #foreground]
+Client[192.168.0.41]: qemu-kvm -vnc 0.0.0.0:0 -cdrom centos.iso -m 2G -smp 2,sockets=1 -device isa-parallel,chardev=lp0 -chardev socket,id=lp0,host=192.168.0.40,port=12345 -device isa-serial,chardev=serial0 -chardev socket,id=serial0,host=192.168.0.40,port=12344
+
+
+Ref:
+
+server
+$ socat tcp-l:54321,reuseaddr,fork file:/dev/tty0,nonblock,waitlock=/var/run/tty0.lock
+$ service ser2net restart
+or ser2net -C 12345:raw:5:/dev/ttyS0:9600 -C 3007:telnet:0:/dev/ttyS6:9600 -C 3003:telnet:0:/dev/ttyS2:9600 banner3 -C 5001:rawlp:10:/dev/lp0
+
+client
+$ socat pty,link=$HOME/dev/vmodem0,waitslave tcp:modem-server:54321
+or socat -d -d pty,link=/dev/CUSTOMNAME,raw,echo=0,waitslave tcp:192.168.x.x:yyyy;
+or socat pty,link=$HOME/dev/ttyV0,waitslave tcp:SerialMachine:3333
+
+http://todbot.com/asus_wl520gu/ser2net_2.3-1_mipsel/etc/ser2net.conf
 http://unix.stackexchange.com/questions/100845/serial-data-over-ethernet-on-a-linux-box
