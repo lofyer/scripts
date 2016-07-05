@@ -1,4 +1,6 @@
 #!/bin/bash
+# Enable NetworkManager
+
 echo "Manually change your SELinux to enforcing and targeted"
 
 yum install -y wget git net-tools bind-utils iptables-services bridge-utils bash-completion epel-release
@@ -34,9 +36,12 @@ ansible-playbook playbooks/byo/openshift_facts.yml
 #ansible-playbook playbooks/byo/config.yml
 # Uninstall
 #ansible-playbook [-i /path/to/file] playbooks/adhoc/uninstall.yml
-oc login system:admin
+oc login -u system:admin
 # Setup Registry
-oc create serviceaccount registry -n default
+oadm registry --service-account=registry
+oc volume deploymentconfigs/docker-registry --add --name=registry-storage -t pvc \
+     --claim-name=/pvc --overwrite
+#oc create serviceaccount registry -n default
 oadm policy add-scc-to-user privileged system:serviceaccount:default:registry
 oadm registry --service-account=registry \
     --config=admin.kubeconfig \
