@@ -1,0 +1,9 @@
+/etc/securetty
+pts0
+pts1
+
+/etc/default/shellinabox
+SHELLINABOX_DATADIR=/var/lib/shellinabox
+SHELLINABOX_USER=shellinabox
+SHELLINABOX_GROUP=shellinabox
+SHELLINABOX_ARGS="--no-beep -s /:SSH"
