@@ -8,3 +8,4 @@ set expandtab
 set shiftwidth=4
 set number
 set noswapfile
+set backspace=indent,eol,start
