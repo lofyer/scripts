@@ -1,8 +1,7 @@
 #!/bin/bash
-CURRENT_DATE=$(date +"%y-%m-%w-%W")
-MAX_DAILY_COPY=3
-MAX_WEEK_COPY=3
-BACKUP_DIR=/backup/
-BASE=mybackup
+MAX_STOR=30
+BACKUP_DIR=/mnt/backup/
+BASE=engine_db
 
-
+# rm db and log 30 days ago
+find $BACKUP_DIR -name "$BASE*.db" -a -type f -mtime +$MAX_STOR -exec rm {} \;
