@@ -1,0 +1,3 @@
+yum install -y extundelete
+mount -o ro /dev/sda4 /mnt
+extundelete /dev/sda4 --inode=2
