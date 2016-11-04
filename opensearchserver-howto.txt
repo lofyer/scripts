@@ -1,0 +1,7 @@
+1. apt-get install tomcat8
+
+2. cp opensearchserver.war /var/lib/tomcat/webapps/
+
+3. echo "OPENSEARCHSERVER_DATA=/root/oss_data/" >> /etc/default/tomcat8
+
+4. service tomcat8 restart
