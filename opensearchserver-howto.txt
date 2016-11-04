@@ -1,7 +1,10 @@
-1. apt-get install tomcat8
+1. Install
+# apt-get install tomcat8
+# cp opensearchserver.war /var/lib/tomcat/webapps/
+# echo "OPENSEARCHSERVER_DATA=/opt/oss_data/" >> /etc/default/tomcat8
+# chown tomcat8.tomcat8 -R /opt/oss_data
+# service tomcat8 restart
 
-2. cp opensearchserver.war /var/lib/tomcat/webapps/
+Add "-Dfile.encoding=UTF-8 -Djava.protocol.handler.pkgs=jcifs -Xmx1g -Duser.timezone=Asia/Shanghai" to JAVA_OPTS in /etc/default/tomcat8
 
-3. echo "OPENSEARCHSERVER_DATA=/root/oss_data/" >> /etc/default/tomcat8
-
-4. service tomcat8 restart
+2. HTTPS
