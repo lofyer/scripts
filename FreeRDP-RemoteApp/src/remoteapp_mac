@@ -1,0 +1,34 @@
+#!/bin/bash
+#Description: Launches RemoteApp with command line arguments.
+#Syntax: remoteapp <exename> <args>
+#Depends: convert_local_to_remoteapp, Python 2.x, pwd, and POSIX $HOME.
+#Notice: Should work on just about any Ubuntu.
+#Author: David Ball, www.daball.me
+REMOTE_HOST=webapp.ecnu.edu.cn
+REMOTE_USER=virtfan_ZB59nu
+REMOTE_PASS=OPM85wqf
+REMOTE_PORT=9001
+
+if [ "$#" == "0" ]; then
+	echo "$0 <exename> <args>"
+	echo "Use --convert-linux-path followed by a local path to convert it to a remote path."
+	echo "Example: remoteapp '||winword' /f --convert-linux-path $HOME/myDoc.docx"
+	exit 1
+fi
+
+REMOTE_COMMAND=$1;shift
+REMOTE_COMMAND_ARGS=
+CWD=`pwd`
+REMOTE_WORKING_DIR=`convert_local_to_remoteapp $CWD`
+
+while (($#)); do
+  if [ "$1" == "--convert-linux-path" ]; then
+    shift
+    REMOTE_COMMAND_ARGS="$REMOTE_COMMAND_ARGS`convert_local_to_remoteapp $1` "
+  else
+    REMOTE_COMMAND_ARGS="$REMOTE_COMMAND_ARGS$1 "
+  fi
+shift
+done
+#xfreerdp -t $REMOTE_PORT -z -a 32 -x l --app -u "$REMOTE_USER" -p "$REMOTE_PASS" --data disk:home:"$HOME" disk:vfsroot:/ -- --plugin rail.dylib --data "$REMOTE_COMMAND":"$REMOTE_WORKING_DIR":"$REMOTE_COMMAND_ARGS" -- "$REMOTE_HOST"
+xfreerdp /v:$REMOTE_HOST:$REMOTE_PORT /u:$REMOTE_USER /p:$REMOTE_PASS /rfx "/app:||explorer" +fonts +compression +clipboard +window-drag +smart-sizing
