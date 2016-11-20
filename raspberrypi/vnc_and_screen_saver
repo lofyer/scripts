@@ -2,4 +2,7 @@ pi@raspberrypi:~ $ cat .config/lxsession/LXDE-pi/autostart
 @lxpanel --profile LXDE-pi
 @pcmanfm --desktop --profile LXDE-pi
 @xscreensaver -no-splash
-x11vnc -forever -loop -auth /home/pi/.Xauthority -display :0
+@xset s noblank
+@xset s off
+@xset -dpms
+x11vnc -forever -auth /home/pi/.Xauthority -display :0
