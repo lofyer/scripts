@@ -1,7 +1,5 @@
 Please comment all the display confiurations except these:
 
-hdmi_safe=0
-disable_overscan=1
-framebuffer_width=1600
-framebuffer_height=900
-framebuffer_depth=32
+hdmi_cvt=1600 900 60 3
+hdmi_group=2
+hdmi_mode=87
