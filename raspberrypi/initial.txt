@@ -28,3 +28,7 @@ dns-nameservers 192.168.0.1
     @xset s off
     @xset -dpms
     @x11vnc -forever -auth /home/pi/.vnc/passwd
+
+5. oanda
+    try run it from cmd
+    try change Xmx from 512 to 768
