@@ -11,9 +11,20 @@ dns-nameservers 192.168.0.1
     expand fs
     enable ssh
     change password
-    enable vnc
 
 3. change /etc/apt/source.list to
     http://mirrors.ustc.edu.cn/raspbian/raspbian
    change /etc/apt/source.list.d/raspi.list to
     http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian
+
+4. add vnc and disable blank
+    apt-get install x11vnc
+    su pi
+    export DISPLAY=:0
+    x11vnc -usepw
+
+   add it to the end of ~/.config/lxsession/LXDE-pi/autostart
+    @xset s noblank
+    @xset s off
+    @xset -dpms
+    @x11vnc -forever -auth /home/pi/.vnc/passwd
