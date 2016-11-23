@@ -12,3 +12,8 @@ dns-nameservers 192.168.0.1
     enable ssh
     change password
     enable vnc
+
+3. change /etc/apt/source.list to
+    http://mirrors.ustc.edu.cn/raspbian/raspbian
+   change /etc/apt/source.list.d/raspi.list to
+    http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian
