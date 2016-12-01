@@ -3,3 +3,4 @@ Please comment all the display confiurations except these:
 hdmi_cvt=1600 900 60 3
 hdmi_group=2
 hdmi_mode=87
+dtparam=audio=on
