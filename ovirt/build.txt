@@ -1,3 +1,6 @@
 1. Recommend Oracle JRE/JDK
 2. Maven needed
 3. export JAVA_HOME=PATH_TO_JDK(/usr/java/jdk)
+4. ulimit -n 10240
+5. ulimit -f 20480
+6. make dist; rpmbuild -tb *.tar.bz2
