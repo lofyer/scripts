@@ -1,0 +1,4 @@
+iptables -t nat -A POSTROUTING -j MASQUERADE
+
+# DNAT
+iptables -t nat -A PREROUTING -i mgmtnet -p tcp --dport 554 -j DNAT --to-destination 192.168.122.202:554
