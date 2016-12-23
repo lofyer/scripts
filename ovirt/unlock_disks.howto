@@ -1,5 +1,11 @@
-# su postgres
+su postgres
 psql engine
-engine$ update images
-engine$ set imagestatus=1
-engine$ where imagestatus=2;
+engine$ update images set imagestatus=1 where imagestatus=2;
+engine$ commit;
+
+# or this
+/usr/share/ovirt-engine/scripts/dbutils/taskcleaner.sh -d engine -u engine
+psql -d engine -U postgres
+SELECT vm_guid, status FROM vm_dynamic WHERE status = 15;
+UPDATE vm_dynamic SET status = 0 WHERE status = 15;
+COMMIT;
