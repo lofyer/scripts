@@ -1,8 +1,8 @@
-/etc/securetty
+vim /etc/securetty
 pts0
 pts1
 
-/etc/default/shellinabox
+vim /etc/default/shellinabox
 SHELLINABOX_DATADIR=/var/lib/shellinabox
 SHELLINABOX_USER=shellinabox
 SHELLINABOX_GROUP=shellinabox
