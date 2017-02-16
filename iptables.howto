@@ -1,4 +1,14 @@
+1. NAT
 iptables -t nat -A POSTROUTING -j MASQUERADE
 
-# DNAT
+2. DNAT
 iptables -t nat -A PREROUTING -i mgmtnet -p tcp --dport 554 -j DNAT --to-destination 192.168.122.202:554
+
+3. Allow ip, deny others
+iptables -A INPUT -p tcp -s YourIP --dport 22 -j ACCEPT
+iptables -A INPUT -p udp -s YourIP --dport 53 -j ACCEPT
+iptables -A INPUT -p tcp -s YourIP --dport 53 -j ACCEPT
+
+iptables -A INPUT -p tcp -s 0.0.0.0/0 --dport 22 -j DROP
+iptables -A INPUT -p udp -s 0.0.0.0/0 --dport 53 -j DROP
+iptables -A INPUT -p tcp -s 0.0.0.0/0 --dport 53 -j DROP
