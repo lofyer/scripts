@@ -1,10 +1,13 @@
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
+export LANG=zh_CN.UTF-8
+unset LC_CTYPE
+
 # For brew
 alias curl='curl --insecure'
-alias htop='sudo htop'
 alias l='ls -hil'
 alias mongod-start='mongod --config /usr/local/etc/mongod.conf'
 alias remote-viewer='/Applications/RemoteViewer.app/Contents/MacOS/RemoteViewer'
-alias vncviewer='/opt/homebrew-cask/Caskroom/tigervnc-viewer/1.4.3/TigerVNC\ Viewer\ 1.4.3.app/Contents/MacOS/TigerVNC\ Viewer'
+alias mt4='wine C:\\Program\ Files\\OANDA\ \-\ Metatrader\\terminal.exe'
 export PATH=$PATH:/Applications/TeX//TeXShop.app/Contents/Resources/TeXShop/bin
+export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
