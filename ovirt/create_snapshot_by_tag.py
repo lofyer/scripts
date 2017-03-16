@@ -6,7 +6,7 @@ from datetime import date
 USERNAME = 'admin@internal'
 PASSWORD = 'admin'
 URL = 'https://localhost/api'
-SNAPSHOT_NAME = 'backup-%s' % date.today().strftime("%Y%m%d")
+SNAPSHOT_NAME = 'backup-{}'.format(date.today().strftime("%Y%m%d"))
 
 api = API(URL, username=USERNAME, password=PASSWORD, insecure=True)
 
