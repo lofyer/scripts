@@ -1,0 +1,3 @@
+[submodule "haproxy-configs"]
+	path = haproxy-configs
+	url = https://github.com/lofyer/haproxy-configs.git
