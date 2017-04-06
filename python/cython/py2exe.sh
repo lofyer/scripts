@@ -7,7 +7,7 @@ cython -3 --embed -o $BASENAME.c $1
 
 if [[ "$unamestr" == 'Linux' ]]; then
     platform='linux'
-    gcc -Os -I /usr/include/python3.3m -o hello hello.c -lpython3.3m -lpthread -lm -lutil -ldl
+    gcc -Os -I/usr/include/python3.4m -o hello hello.c -lpython3.4m -lpthread -lm -lutil -ldl
 elif [[ "$unamestr" == 'FreeBSD' ]]; then
     platform='freebsd'
 elif [[ "$unamestr" == 'Darwin' ]]; then
