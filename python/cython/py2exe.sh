@@ -1,6 +1,17 @@
 #!/bin/bash
 BASENAME=$(basename $1 .py)
-cython -2 --embed -o $BASENAME.c $1
-gcc -o $BASENAME $BASENAME.c -framework Python
+platform='unknown'
+unamestr=`uname`
+
+cython -3 --embed -o $BASENAME.c $1
+
+if [[ "$unamestr" == 'Linux' ]]; then
+    platform='linux'
+    gcc -Os -I /usr/include/python3.3m -o hello hello.c -lpython3.3m -lpthread -lm -lutil -ldl
+elif [[ "$unamestr" == 'FreeBSD' ]]; then
+    platform='freebsd'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+    platform='macos'
+    gcc -o $BASENAME $BASENAME.c -framework Python
+fi
 rm -f $BASENAME.c
-#gcc -Os -I /usr/include/python3.3m -o hello hello.c -lpython3.3m -lpthread -lm -lutil -ldl
