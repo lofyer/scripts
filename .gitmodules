@@ -1,3 +1,6 @@
 [submodule "haproxy-configs"]
 	path = haproxy-configs
 	url = https://github.com/lofyer/haproxy-configs.git
+[submodule "self-installer/makeself"]
+	path = self-installer/makeself
+	url = https://github.com/megastep/makeself

@@ -1,0 +1,5 @@
+#!/bin/sh
+echo This is the setup script.
+cd project
+tar xf test.tar.xz
+cp test.file /tmp
