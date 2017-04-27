@@ -1,0 +1,3 @@
+[root@engine ~]# cat /etc/ovirt-engine/engine.conf.d/10-setup-java.conf
+ENGINE_HEAP_MIN="2048M"
+ENGINE_HEAP_MAX="64381M"
