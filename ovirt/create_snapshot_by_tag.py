@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 from ovirtsdk.api import API
+from ovirtsdk.xml import params
 from datetime import date
 
 USERNAME = 'admin@internal'
