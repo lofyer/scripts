@@ -1,0 +1,1 @@
+yum --disablerepo=* --enablerepo=rhel-7-server-rpms,rhel-7-server-supplementary-rpms,rhel-7-server-rhv-4.1-rpms,rhel-7-server-rhv-4-tools-rpms,jb-eap-7-for-rhel-7-server-rpms
