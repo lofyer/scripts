@@ -13,8 +13,4 @@ export PS1="\u@\h:\t:[${YELLOW}\w${RESET}]\$ "
 # For brew
 alias curl='curl --insecure'
 alias l='ls -hil'
-alias mongod-start='mongod --config /usr/local/etc/mongod.conf'
-alias remote-viewer='/Applications/RemoteViewer.app/Contents/MacOS/RemoteViewer'
-alias mt4='wine C:\\Program\ Files\\OANDA\ \-\ Metatrader\\terminal.exe'
-export PATH=$PATH:/Applications/TeX//TeXShop.app/Contents/Resources/TeXShop/bin
-export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
