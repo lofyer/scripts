@@ -13,4 +13,6 @@ export PS1="\u@\h:\t:[${YELLOW}\w${RESET}]\$ "
 # For brew
 alias curl='curl --insecure'
 alias l='ls -hil'
+export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="/Users/lofyer/my_git/ssh-tui:$PATH"
