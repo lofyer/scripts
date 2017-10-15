@@ -1,0 +1,48 @@
+[root@linux~]# fdisk /dev/sda
+
+The number of cylinders for this disk is set to 5221.
+There is nothing wrong with that, but this is larger than 1024,
+and could in certain setups cause problems with:
+
+1) software that runs at boot time (e.g., old versions of LILO)
+2) booting and partitioning software from other OSs
+(e.g., DOS FDISK, OS/2 FDISK)
+
+Command (m for help): p
+
+Disk /dev/sda: 42.9 GB, 42949672960 bytes
+255 heads, 63 sectors/track, 5221 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+
+Device Boot      Start         End      Blocks   Id  System
+/dev/sda1   *           1          13      104391   83  Linux
+/dev/sda2              14        5221    41833260   8e  Linux LVM
+
+Command (m for help): d
+Partition number (1-4): 2
+
+Command (m for help): n
+Command action
+e   extended
+p   primary partition (1-4)
+p
+Partition number (1-4): 2
+First cylinder (14-5221, default 14):
+Using default value 14
+Last cylinder or +size or +sizeM or +sizeK (14-5221, default 5221):
+Using default value 5221
+
+Command (m for help): t
+Partition number (1-4): 2
+Hex code (type L to list codes): 8e
+Changed system type of partition 2 to 8e (Linux LVM)
+
+Command (m for help): w
+
+[root@linux~]# partprobe
+
+
+[root@linux~]# pvresize /dev/sda2
+[root@linux~]# lvresize -l +100%FREE /dev/mapper/centos-root
+[root@linux~]# resize2fs /dev/mapper/centos-root # EXT3/EXT4
+[root@linux~]# xfs_grow /dev/mapper/centos-root # XFS
