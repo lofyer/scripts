@@ -1,0 +1,46 @@
+yum install -y python2-pip
+pip2 install ceph-deploy
+
+# In each host
+yum install -y ceph
+
+# In host1
+mkdir ceph-config
+cd ceph-config
+ceph-deploy new nova1 nova2 nova3
+cat ceph.conf
+
+=================
+[global]
+fsid = 29a270a3-00cc-42e5-9236-c24e6d8ecded
+mon_initial_members = nova1, nova2, nova3
+mon_host = 192.168.81.20,192.168.81.21,192.168.81.22
+auth_cluster_required = cephx
+auth_service_required = cephx
+auth_client_required = cephx
+
+public_network = 192.168.80.0/22
+cluster_network = 172.20.0.0/24
+
+osd_pool_default_size = 3
+osd_pool_default_min_size = 2
+osd_pool_default_pg_num = 128
+osd_pool_default_pgp_num = 128
+osd_max_backfills = 1
+osd_recovery_max_active = 1
+osd crush update on start = 0
+debug_ms = 0
+debug_osd = 0
+=================
+
+ceph-deploy mon create-initial
+
+ceph-deploy admin nova1 nova2 nova3
+
+ceph-deploy mgr create nova1
+
+ceph-deploy osd create nova01:/var/lib/ceph/osd nova02:/var/lib/ceph/osd nova03:/var/lib/ceph/osd
+#ceph-deploy osd prepare nova01:/var/lib/ceph/osd nova02:/var/lib/ceph/osd nova03:/var/lib/ceph/osd
+ceph-deploy osd activate nova01:/var/lib/ceph/osd nova02:/var/lib/ceph/osd nova03:/var/lib/ceph/osd
+
+# delete everything in /var/lib/ceph/osd if fsid is not match
