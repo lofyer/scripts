@@ -37,10 +37,27 @@ ceph-deploy mon create-initial
 
 ceph-deploy admin nova1 nova2 nova3
 
-ceph-deploy mgr create nova1
+ceph-deploy mgr create nova1 nova2 nova3
+# Install mgr:7000
+ceph mgr module enable dashboard
 
 ceph-deploy osd create nova01:/var/lib/ceph/osd nova02:/var/lib/ceph/osd nova03:/var/lib/ceph/osd
 #ceph-deploy osd prepare nova01:/var/lib/ceph/osd nova02:/var/lib/ceph/osd nova03:/var/lib/ceph/osd
 ceph-deploy osd activate nova01:/var/lib/ceph/osd nova02:/var/lib/ceph/osd nova03:/var/lib/ceph/osd
 
-# delete everything in /var/lib/ceph/osd if fsid is not match
+# Delete everything in /var/lib/ceph/osd if fsid is not match
+# ceph-deploy purge node01 node02 node03
+# ceph-deploy purgedata node01 node02 node03
+# ceph-deploy forgetkeys
+# yum remove python-cephfs libcephfs2 python-rados librados2
+
+# Change args
+ceph tell mon.nova3 injectargs '--mon-allow-pool-delete=true'
+
+# Ceph-hammer need pip install ceph-deploy==1.5.37
+
+# Create cephx for glance
+# ceph auth get-or-create client.images mon 'allow r' osd 'allow class-read object_prefix rdb_children, allow rwx pool=images' -o /etc/ceph/ceph.client.images.keyring
+# Ref: http://superuser.openstack.org/articles/ceph-as-storage-for-openstack/
+# Ref: https://docs.openstack.org/kolla-ansible/latest/reference/external-ceph-guide.html
+# Ref: https://docs.openstack.org/glance/pike/configuration/glance_api.html
