@@ -1,0 +1,25 @@
+#cloud-config
+users:
+ - name: demo
+   shell: /bin/bash
+   groups: root
+   sudo: ['ALL=(ALL) NOPASSWD:ALL']
+   ssh-authorized-keys:
+       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+PmqBvrEdUgN/275alDnmFMC5R9ctsIbED+SsEAu6SQQX8VtzNMa1104hZ3BjDpP16SMvo1PVGcHma4MgTDfcNdyiQ3S3j87LtFxRr7UoMxhwy3RgaFzgI3ZVSvTu3XC1xqmkH2Ur69mQta1B3RpwdSX0mSUs5uK65DP7mvJDkCVfLX5hZmt8xuWNrnAvgh+xbBSTvG35OycBk+FiU8HnXnwuVkpxKjfwdSiySZL8SxRrApe5HRO/JyUzgBUn54b+mjoOM+R8GZ1bKNEHNrXTqVzABfR2Ocj0gOJAqZYJi2aTwP3N91yiiucpuxYqu6tYLRCOmi8Cl2TmXA4e5Ejp lofyer@lofyerdeMacBook-Pro.local
+bootcmd:
+ - mkdir /tmp/temp 
+write_files:
+ - path: /tmp/zstack_config
+   content: |
+       Hello,world!
+   permissions: '0755'
+hostname: carl-test
+disable_root: false
+ssh_pwauth: yes
+chpasswd:
+  list: |
+      root:password
+  expire: False
+runcmd:
+ - echo ls -l / >/root/list.sh
+ - touch /tmp/test

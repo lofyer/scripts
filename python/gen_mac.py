@@ -5,4 +5,4 @@ def gen_mac(prefix='AC:DE:48'):
         random.randint(0, 0xff),
         random.randint(0, 0xff))
     
-print gen_mac()
+print(gen_mac())

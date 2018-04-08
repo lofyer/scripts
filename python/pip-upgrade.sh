@@ -1,5 +1,5 @@
 #!/bin/bash
-PIP_CMD=pip2
+PIP_CMD=pip3
 LIST=`$PIP_CMD list|gawk '{print $1}'`
 for i in $LIST
 do

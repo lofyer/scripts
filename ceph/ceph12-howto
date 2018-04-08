@@ -3,6 +3,8 @@ pip2 install ceph-deploy
 
 # In each host
 yum install -y ceph
+iptables -L
+service iptables save
 
 # In host1
 mkdir ceph-config
@@ -49,7 +51,7 @@ ceph-deploy osd activate nova01:/var/lib/ceph/osd nova02:/var/lib/ceph/osd nova0
 # ceph-deploy purge node01 node02 node03
 # ceph-deploy purgedata node01 node02 node03
 # ceph-deploy forgetkeys
-# yum remove python-cephfs libcephfs2 python-rados librados2
+# yum remove -y python-cephfs libcephfs2 python-rados librados2
 
 # Change args
 ceph tell mon.nova3 injectargs '--mon-allow-pool-delete=true'
@@ -61,3 +63,11 @@ ceph tell mon.nova3 injectargs '--mon-allow-pool-delete=true'
 # Ref: http://superuser.openstack.org/articles/ceph-as-storage-for-openstack/
 # Ref: https://docs.openstack.org/kolla-ansible/latest/reference/external-ceph-guide.html
 # Ref: https://docs.openstack.org/glance/pike/configuration/glance_api.html
+
+ceph osd set noout
+
+# Recovery SSD journal disk
+# http://bbs.ceph.org.cn/article/36
+
+# Activate a down disk
+# ceph-disk activate-all

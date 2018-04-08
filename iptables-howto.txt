@@ -12,3 +12,8 @@ iptables -A INPUT -p tcp -s YourIP --dport 53 -j ACCEPT
 iptables -A INPUT -p tcp -s 0.0.0.0/0 --dport 22 -j DROP
 iptables -A INPUT -p udp -s 0.0.0.0/0 --dport 53 -j DROP
 iptables -A INPUT -p tcp -s 0.0.0.0/0 --dport 53 -j DROP
+
+4. Only allow inner and weixin
+iptables -A OUTPUT -d qyapi.weixin.qq.com -j ACCEPT
+iptables -A OUTPUT -d 192.168.0.0/16 -j ACCEPT
+iptables -A OUTPUT -d 0/0 -j DROP
