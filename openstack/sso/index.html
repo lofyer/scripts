@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>单点登录中 ...</title>
+    <style type="text/css">
+        body {
+            background-image: url('https://crunchify.com/bg.png');
+        }
+    </style>
+</head>
+
+<body onload="loginForm()">
+   <form action="/dashboard/auth/login/" name="myform" id="myform" method="post">
+        <input type="hidden" name="csrfmiddlewaretoken" id="csrfmiddlewaretoken" value="">
+        <input type="hidden" name="domain" value="default">
+        <input type="hidden" name="username" value="administrator">
+        <input type="hidden" name="password" value="=pswd4admin!">
+    </form>
+<div style="width:100%;height:100%;text-align:center;font-size:24px;font-weight:bold">
+<br/><br/><br/>
+    正在登陆 ...
+</div>
+</body>
+
+  <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+    <script>
+        $(function(){
+          $.ajax({ 
+            type:"get",
+            dataType:'html',
+            url:"http://192.168.81.18/dashboard/auth/login/",
+            success : function(result) {
+              var dom = $(result);
+              var inps = dom.find("input[name='csrfmiddlewaretoken']")
+              var csrf_token = inps[0];
+              $("#csrfmiddlewaretoken").val(csrf_token.value);
+              $("#myform").submit();
+            } 
+          }); 
+        })
+    </script>
+</html>
