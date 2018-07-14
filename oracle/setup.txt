@@ -1,1 +1,48 @@
+yum install -y compat-libcap1 libstdc++-devel gcc-c++ ksh glibc-devel libaio-devel
+
 sqlplus system@orcl
+
+http://www.lab128.com/rac12_installation_using_vb/article_text.html
+
+DISABLE SELINUX
+
+CHANGE INSTALL DIR
+
+FDISK
+ORACLEASM CREATEDISK DISK1 /dev/sda1
+SUPPORT NFS ASM
+
+oracleasm configure -i oracle:dba not oracle:oinstall
+
+ENABLE CHRONYD
+
+DSIABLE FIREWALLD
+
+
+- /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+172.20.14.121 rac1-pub
+172.20.14.214 rac2-pub
+
+192.168.4.132 rac1-pri
+192.168.3.123 rac2-pri
+
+172.20.14.201 rac1-vip
+172.20.14.202 rac2-vip
+172.20.14.203 rac-scan
+
+SET HOSTNAME to PUB
+SSH using oracle user with NOPASSWORD
+
+AUTOSTART ALL NETWORKS
+
+eth0 pub
+eth1 pri+asm
+
+NO GIMR
+
+PATH: /dev/oracleasm/disks/
+
+ALL PASSWORD
