@@ -31,7 +31,10 @@ DSIABLE FIREWALLD
 
 172.20.14.201 rac1-vip
 172.20.14.202 rac2-vip
-172.20.14.203 rac-scan
+
+172.20.14.211 rac-scan
+172.20.14.212 rac-scan
+172.20.14.213 rac-scan
 
 SET HOSTNAME to PUB
 SSH using oracle user with NOPASSWORD
@@ -46,3 +49,6 @@ NO GIMR
 PATH: /dev/oracleasm/disks/
 
 ALL PASSWORD
+
+11g's packages:
+libaio glibc compat-libstdc++ elfutils-libelf-devel libaio-devel libstdc++ unixODBC unixODBC-devel pdksh

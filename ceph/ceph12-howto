@@ -57,6 +57,7 @@ ceph-deploy osd activate nova01:/var/lib/ceph/osd nova02:/var/lib/ceph/osd nova0
 ceph tell mon.nova3 injectargs '--mon-allow-pool-delete=true'
 
 # Ceph-hammer need pip install ceph-deploy==1.5.37
+# Ceph-luminous need pip install ceph-deploy==2.0.0
 
 # Create cephx for glance
 # ceph auth get-or-create client.images mon 'allow r' osd 'allow class-read object_prefix rdb_children, allow rwx pool=images' -o /etc/ceph/ceph.client.images.keyring

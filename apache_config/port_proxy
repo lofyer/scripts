@@ -1,0 +1,5 @@
+Listen 8888
+<VirtualHost *:8888>
+ProxyPass / http://localhost:3000/
+ProxyPassReverse / http://localhost:3000
+</VirtualHost>

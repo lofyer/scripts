@@ -2,3 +2,4 @@
 a = '11:00 AM'
 b = datetime.strptime(a, '%I:%M %p')
 b.strftime('%H:%M')
+datetime.now().strftime("%Y%m%d")

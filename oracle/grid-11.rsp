@@ -1,0 +1,338 @@
+###############################################################################
+## Copyright(c) Oracle Corporation 1998,2008. All rights reserved.           ##
+##                                                                           ##
+## Specify values for the variables listed below to customize                ##
+## your installation.                                                        ##
+##                                                                           ##
+## Each variable is associated with a comment. The comment                   ##
+## can help to populate the variables with the appropriate                   ##
+## values.							             ##
+##                                                                           ##
+## IMPORTANT NOTE: This file contains plain text passwords and               ##
+## should be secured to have read permission only by oracle user             ##
+## or db administrator who owns this installation.                           ##
+##                                                                           ##
+###############################################################################
+
+###############################################################################
+##                                                                           ##
+## Instructions to fill this response file                                   ##
+## To install and configure 'Grid Infrastructure for Cluster'                ##
+##  - Fill out sections A,B,C,D,E,F and G                                    ##
+##  - Fill out section G if OCR and voting disk should be placed on ASM      ##
+##                                                                           ##
+## To install and configure 'Grid Infrastructure for Standalone server'      ##
+##  - Fill out sections A,B and G                                            ##
+##                                                                           ##
+## To install software for 'Grid Infrastructure'                             ##
+##  - Fill out sections A,B and C                                            ##
+##                                                                           ##
+## To upgrade clusterware and/or Automatic storage management of earlier     ##
+## releases                                                                  ##
+##  - Fill out sections A,B,C,D and H                                        ##
+##                                                                           ##
+###############################################################################
+#------------------------------------------------------------------------------
+# Do not change the following system generated value. 
+#------------------------------------------------------------------------------
+oracle.install.responseFileVersion=/oracle/install/rspfmt_crsinstall_response_schema_v11_2_0
+
+###############################################################################
+#                                                                             #
+#                          SECTION A - BASIC                                  #
+#                                                                             #
+###############################################################################
+
+#-------------------------------------------------------------------------------
+# Specify the hostname of the system as set during the install. It can be used
+# to force the installation to use an alternative hostname rather than using the
+# first hostname found on the system. (e.g., for systems with multiple hostnames 
+# and network interfaces)
+#-------------------------------------------------------------------------------
+ORACLE_HOSTNAME=rac1-pub
+
+#-------------------------------------------------------------------------------
+# Specify the location which holds the inventory files.
+#-------------------------------------------------------------------------------
+INVENTORY_LOCATION=/u01/app/oraInventory
+
+#-------------------------------------------------------------------------------
+# Specify the languages in which the components will be installed.             
+#
+# en   : English                  ja   : Japanese                  
+# fr   : French                   ko   : Korean                    
+# ar   : Arabic                   es   : Latin American Spanish    
+# bn   : Bengali                  lv   : Latvian                   
+# pt_BR: Brazilian Portuguese     lt   : Lithuanian                
+# bg   : Bulgarian                ms   : Malay                     
+# fr_CA: Canadian French          es_MX: Mexican Spanish           
+# ca   : Catalan                  no   : Norwegian                 
+# hr   : Croatian                 pl   : Polish                    
+# cs   : Czech                    pt   : Portuguese                
+# da   : Danish                   ro   : Romanian                  
+# nl   : Dutch                    ru   : Russian                   
+# ar_EG: Egyptian                 zh_CN: Simplified Chinese        
+# en_GB: English (Great Britain)  sk   : Slovak                    
+# et   : Estonian                 sl   : Slovenian                 
+# fi   : Finnish                  es_ES: Spanish                   
+# de   : German                   sv   : Swedish                   
+# el   : Greek                    th   : Thai                      
+# iw   : Hebrew                   zh_TW: Traditional Chinese       
+# hu   : Hungarian                tr   : Turkish                   
+# is   : Icelandic                uk   : Ukrainian                 
+# in   : Indonesian               vi   : Vietnamese                
+# it   : Italian                                                   
+#
+# Example : SELECTED_LANGUAGES=en,fr,ja
+#-------------------------------------------------------------------------------
+SELECTED_LANGUAGES=en
+
+#-------------------------------------------------------------------------------
+# Specify the installation option.
+# Allowed values: CRS_CONFIG or HA_CONFIG or UPGRADE or CRS_SWONLY
+#   CRS_CONFIG - To configure Grid Infrastructure for cluster
+#   HA_CONFIG  - To configure Grid Infrastructure for stand alone server
+#   UPGRADE    - To upgrade clusterware software of earlier release
+#   CRS_SWONLY - To install clusterware files only (can be configured for cluster 
+#                or stand alone server later)
+#-------------------------------------------------------------------------------
+oracle.install.option=CRS_CONFIG
+
+#-------------------------------------------------------------------------------
+# Specify the complete path of the Oracle Base.
+#-------------------------------------------------------------------------------
+
+ORACLE_BASE=/u01/app/oracle
+
+#-------------------------------------------------------------------------------
+# Specify the complete path of the Oracle Home.
+#-------------------------------------------------------------------------------
+ORACLE_HOME=/u01/app/11.2.0/grid
+
+################################################################################
+#                                                                              #
+#                              SECTION B - GROUPS                              #
+#                                                                              #
+#   The following three groups need to be assigned for all GI installations.   #
+#   OSDBA and OSOPER can be the same or different.  OSASM must be different    #
+#   than the other two.                                                        #
+#                                                                              #
+################################################################################
+#-------------------------------------------------------------------------------
+# The DBA_GROUP is the OS group which is to be granted OSDBA privileges.
+#-------------------------------------------------------------------------------
+oracle.install.asm.OSDBA=oinstall
+
+#-------------------------------------------------------------------------------
+# The OPER_GROUP is the OS group which is to be granted OSOPER privileges.
+#-------------------------------------------------------------------------------
+oracle.install.asm.OSOPER=oinstall
+
+#-------------------------------------------------------------------------------
+# The OSASM_GROUP is the OS group which is to be granted OSASM privileges. This
+# must be different than the previous two.
+#-------------------------------------------------------------------------------
+oracle.install.asm.OSASM=oinstall
+
+################################################################################
+#                                                                              #
+#                           SECTION C - SCAN                                   #
+#                                                                              #
+################################################################################
+#-------------------------------------------------------------------------------
+# Specify a name for SCAN
+#-------------------------------------------------------------------------------
+oracle.install.crs.config.gpnp.scanName=rac-scan
+
+#-------------------------------------------------------------------------------
+# Specify a unused port number for SCAN service
+#-------------------------------------------------------------------------------
+oracle.install.crs.config.gpnp.scanPort=1521
+
+################################################################################
+#                                                                              #
+#                           SECTION D - CLUSTER & GNS                      #
+#                                                                              #
+################################################################################
+#-------------------------------------------------------------------------------
+# Specify a name for the Cluster you are creating.
+#
+# The maximum length allowed for clutername is 15 characters. The name can be 
+# any combination of lower and uppercase alphabets (A - Z), (0 - 9), hyphen(-)
+# and underscore(_).
+#-------------------------------------------------------------------------------
+oracle.install.crs.config.clusterName=rac-scan
+
+#-------------------------------------------------------------------------------
+# Specify 'true' if you would like to configure Grid Naming Service(GNS), else
+# specify 'false'
+#-------------------------------------------------------------------------------
+oracle.install.crs.config.gpnp.configureGNS=false
+
+#-------------------------------------------------------------------------------
+# Applicable only if you choose to configure GNS
+# Specify the GNS subdomain and an unused virtual hostname for GNS service
+# Additionally you may also specify if VIPs have to be autoconfigured
+#-------------------------------------------------------------------------------
+oracle.install.crs.config.gpnp.gnsSubDomain=
+oracle.install.crs.config.gpnp.gnsVIPAddress=
+oracle.install.crs.config.autoConfigureClusterNodeVIP=false
+
+#-------------------------------------------------------------------------------
+# Specify a list of public node names, and virtual hostnames that have to be 
+# part of the cluster.
+#
+# The list should a comma-separated list of nodes.  Each entry in the list 
+# should be a colon-separated string that contains 2 fields.
+#
+# The fields should be ordered as follows:
+# 1. The first field is for public node name.
+# 2. The second field is for virtual host name
+#    (specify as AUTO if you have chosen 'auto configure for VIP' 
+#     i.e. autoConfigureClusterNodeVIP=true)
+#
+# Example: oracle.install.crs.config.clusterNodes=node1:node1-vip,node2:node2-vip
+#-------------------------------------------------------------------------------
+oracle.install.crs.config.clusterNodes=rac1-pub:rac1-vip,rac2-pub:rac2-vip
+
+#-------------------------------------------------------------------------------
+# The value should be a comma separated strings where each string is as shown below
+# InterfaceName:SubnetMask:InterfaceType
+# where InterfaceType can be either "1" or "2"(2 indicates private, and 1 indicates public)
+#
+# For example: eth0:140.87.24.0:1,eth1:140.87.40.0:2,eth2:140.87.52.0:1
+#
+#-------------------------------------------------------------------------------
+oracle.install.crs.config.privateInterconnects=eth0:172.20.0.0:1,eth1:192.168.0.0:2,virbr0:192.168.122.0:3
+
+################################################################################
+#                                                                              #
+#                              SECTION E - STORAGE                             #
+#                                                                              #
+################################################################################
+
+#-------------------------------------------------------------------------------
+# Specify the type of storage to use for Oracle Cluster Registry(OCR) and Voting
+# Disks files
+# - ASM_STORAGE
+# - FILE_SYSTEM_STORAGE 
+#-------------------------------------------------------------------------------
+oracle.install.crs.config.storageOption=ASM_STORAGE
+
+
+#-------------------------------------------------------------------------------
+# THIS PROPERTY NEEDS TO BE FILLED ONLY IN CASE OF WINDOWS INSTALL. 
+# Specify a comma separated list of strings where each string is as shown below:
+# Disk Number:Partition Number:Drive Letter:Format Option
+# The Disk Number and Partition Number should refer to the location which has to 
+# be formatted. The Drive Letter should refer to the drive letter that has to be 
+# assigned. "Format Option" can be either of the following -
+# 1. SOFTWARE - Format to place software binaries.
+# 2. DATA - Format to place the OCR/VDSK files.
+#
+# For example: 1:2:P:DATA,1:3:Q:SOFTWARE,1:4:R:DATA,1:5:S:DATA
+#
+#------------------------------------------------------------------------------- 
+oracle.install.crs.config.sharedFileSystemStorage.diskDriveMapping=
+
+#-------------------------------------------------------------------------------
+# These properties are applicable only if FILE_SYSTEM_STORAGE is chosen for 
+# storing OCR and voting disk
+# Specify the location(s) and redundancy for OCR and voting disks
+# Multiple locations can be specified, seprated by commas.
+# In case of windows, mention the drive location that is specified to be
+# formatted for DATA in the above property.
+# Redundancy can be one of these:
+#     NORMAL - one(1) location should be specified for OCR and voting disk
+#     EXTERNAL - three(3) locations should be specified for OCR and voting disk
+#-------------------------------------------------------------------------------
+oracle.install.crs.config.sharedFileSystemStorage.votingDiskLocations=
+oracle.install.crs.config.sharedFileSystemStorage.votingDiskRedundancy=NORMAL
+oracle.install.crs.config.sharedFileSystemStorage.ocrLocations=
+oracle.install.crs.config.sharedFileSystemStorage.ocrRedundancy=NORMAL
+               	
+################################################################################
+#                                                                              #
+#                               SECTION F - IPMI                               #
+#                                                                              #
+################################################################################
+
+#-------------------------------------------------------------------------------
+# Specify 'true' if you would like to configure Intelligent Power Management interface
+# (IPMI), else specify 'false'
+#-------------------------------------------------------------------------------
+oracle.install.crs.config.useIPMI=false
+
+#-------------------------------------------------------------------------------
+# Applicable only if you choose to configure IPMI
+# i.e. oracle.install.crs.config.useIPMI=true
+# Specify the username and password for using IPMI service
+#-------------------------------------------------------------------------------
+oracle.install.crs.config.ipmi.bmcUsername=
+oracle.install.crs.config.ipmi.bmcPassword=
+
+################################################################################
+#                                                                              #
+#                                SECTION G - ASM                               #
+#                                                                              #
+################################################################################
+#-------------------------------------------------------------------------------
+# Specify a password for SYSASM user of the ASM instance
+#-------------------------------------------------------------------------------
+oracle.install.asm.SYSASMPassword=
+
+#-------------------------------------------------------------------------------
+# The ASM DiskGroup
+#
+# Example: oracle.install.asm.diskGroup.name=data
+#
+#-------------------------------------------------------------------------------
+oracle.install.asm.diskGroup.name=DATA
+
+#-------------------------------------------------------------------------------
+# Redundancy level to be used by ASM.
+# It can be one of the following  
+# - NORMAL
+# - HIGH
+# - EXTERNAL
+# Example: oracle.install.asm.diskGroup.redundancy=NORMAL
+#
+#-------------------------------------------------------------------------------
+oracle.install.asm.diskGroup.redundancy=EXTERNAL
+
+#-------------------------------------------------------------------------------
+# List of disks to create a ASM DiskGroup
+#
+# Example: oracle.install.asm.diskGroup.disks=/oracle/asm/disk1,/oracle/asm/disk2
+#
+#-------------------------------------------------------------------------------
+oracle.install.asm.diskGroup.disks=/dev/oracleasm/disks/DISK1
+
+#-------------------------------------------------------------------------------
+# The disk discovery string to be used to discover the disks used create a ASM DiskGroup
+#
+# Example: oracle.install.asm.diskGroup.diskDiscoveryString=/oracle/asm/*
+#
+#-------------------------------------------------------------------------------
+oracle.install.asm.diskGroup.diskDiscoveryString=/dev/oracleasm/disks/
+
+#-------------------------------------------------------------------------------
+# oracle.install.asm.monitorPassword=password
+#-------------------------------------------------------------------------------
+oracle.install.asm.monitorPassword=
+
+################################################################################
+#                                                                              #
+#                             SECTION H - UPGRADE                              #
+#                                                                              #
+################################################################################
+#-------------------------------------------------------------------------------
+# Specify nodes for Upgrade.
+# Example: oracle.install.crs.upgrade.clusterNodes=node1,node2
+#-------------------------------------------------------------------------------
+oracle.install.crs.upgrade.clusterNodes=
+
+#-------------------------------------------------------------------------------
+# For RAC-ASM only. oracle.install.asm.upgradeASM=true/false
+#-------------------------------------------------------------------------------
+oracle.install.asm.upgradeASM=false
