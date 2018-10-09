@@ -1,0 +1,2 @@
+socat tcp4-listen:2222,fork tcp6:[2001:19f0:7001:5a34:5400:01ff:feb5:5bcd]:80
+socat udp4-listen:2222,fork udp6:[2001:19f0:7001:5a34:5400:01ff:feb5:5bcd]:80
