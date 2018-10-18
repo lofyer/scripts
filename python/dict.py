@@ -16,7 +16,7 @@ for i in range(0,end):
     ch2 = chars[n%base]
     n = n/base
     ch3 = chars[n%base]
-    print i,ch3,ch2,ch1,ch0
+    print(i,ch3,ch2,ch1,ch0)
 
 f.write(ch3+ch2+ch1+ch0+'\r\n')
 f.close()
