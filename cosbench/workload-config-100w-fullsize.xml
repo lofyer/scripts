@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<workload name="my-s3-ceph" description="my s3 benchmark for s3">
+  <storage type="s3" config="accesskey=W4OTLJ4K4F2QFAH5NUBP;secretkey=JNhC6vAeJWsigEPf332Uv1AAga7fQbRm9clh0YkG;endpoint=http://172.31.250.5:8060;path_style_access=false" />
+  <workflow>
+
+    <workstage name="init">
+      <work name="init" type="init" workers="1" interval="5" config="containers=r(1,32)objects=r(0,0);sizes=c(0)B;"/>
+    </workstage>
+
+    <workstage name="prepare-64k-for-read">
+      <work name="prepare" type="prepare" workers="8" interval="5" afr="0" totalOps="1" totalBytes="0" config="containers=r(1,32);objects=r(1,100);sizes=c(64)KB"/>
+    </workstage>
+
+    <workstage name="main-100w-1k">
+      <work name="normal" type="normal" workers="200" interval="5" runtime="180">
+                <operation type="read" ratio="0" division="none" config="containers=u(1,32);objects=u(1,100);" id="none"/>
+                <operation type="write" ratio="100" division="none" config="containers=u(1,32);objects=u(101,200);sizes=c(1)KB" id="none"/>
+      </work>
+    </workstage>
+
+    <workstage name="main-100w-64k">
+      <work name="normal" type="normal" workers="200" interval="5" runtime="180">
+                <operation type="read" ratio="0" division="none" config="containers=u(1,32);objects=u(1,100);" id="none"/>
+                <operation type="write" ratio="100" division="none" config="containers=u(1,32);objects=u(101,200);sizes=c(64)KB" id="none"/>
+      </work>
+    </workstage>
+
+    <workstage name="main-100w-256k">
+      <work name="normal" type="normal" workers="200" interval="5" runtime="180">
+                <operation type="read" ratio="0" division="none" config="containers=u(1,32);objects=u(1,100);" id="none"/>
+                <operation type="write" ratio="100" division="none" config="containers=u(1,32);objects=u(101,200);sizes=c(256)KB" id="none"/>
+      </work>
+    </workstage>
+
+    <workstage name="main-100w-1024k">
+      <work name="normal" type="normal" workers="200" interval="5" runtime="180">
+                <operation type="read" ratio="0" division="none" config="containers=u(1,32);objects=u(1,100);" id="none"/>
+                <operation type="write" ratio="100" division="none" config="containers=u(1,32);objects=u(101,200);sizes=c(1024)KB" id="none"/>
+      </work>
+    </workstage>
+
+    <workstage name="main-100w-5120k">
+      <work name="normal" type="normal" workers="200" interval="5" runtime="180">
+                <operation type="read" ratio="0" division="none" config="containers=u(1,32);objects=u(1,100);" id="none"/>
+                <operation type="write" ratio="100" division="none" config="containers=u(1,32);objects=u(101,200);sizes=c(5120)KB" id="none"/>
+      </work>
+    </workstage>
+
+    <workstage name="main-100w-10240k">
+      <work name="normal" type="normal" workers="200" interval="5" runtime="180">
+                <operation type="read" ratio="0" division="none" config="containers=u(1,32);objects=u(1,100);" id="none"/>
+                <operation type="write" ratio="100" division="none" config="containers=u(1,32);objects=u(101,200);sizes=c(10240)KB" id="none"/>
+      </work>
+    </workstage>
+
+    <workstage name="cleanup">
+      <work name="cleanup" type="cleanup" workers="1" config="containers=r(1,32);objects=r(1,200);"/>
+    </workstage>
+
+    <workstage name="dispose">
+      <work name="dispose" type="dispose" workers="1" config="containers=r(1,32);"/>
+    </workstage>
+
+  </workflow>
+</workload>

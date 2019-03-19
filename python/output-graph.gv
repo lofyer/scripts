@@ -1,0 +1,9 @@
+// 这是一个有向图
+digraph {
+	A [label="医生" image="asd.jpeg" shape=box]
+	B [label="医生"]
+	C [label="护士"]
+	A -> B
+	A -> C
+	B -> C
+}
