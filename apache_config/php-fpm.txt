@@ -1,0 +1,5 @@
+apt install php-fpm
+a2enmod proxy_fcgi setenvif
+a2enconf php-fpm
+service apache2 reload
+service apache2 restart

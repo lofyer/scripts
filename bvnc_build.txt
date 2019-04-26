@@ -1,0 +1,8 @@
+FreeRDP:
+git checkout dbbb341; cmake .; ant release
+
+Singed keystore:
+keytool -genkey -alias android.keystore -keyalg RSA -validity 20000 -keystore android.keystore
+
+Ref:
+http://www.mail-archive.com/spice-devel@lists.freedesktop.org/msg13763.html
