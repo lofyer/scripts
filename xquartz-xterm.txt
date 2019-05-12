@@ -1,0 +1,2 @@
+terminal:
+xterm -e "source ~/.bash_profile;/bin/bash"
