@@ -1,0 +1,5 @@
+How to disable HyperThreading in MacOS(only after 10.14.5).
+
+command + R # Reboot
+nvram boot-args=”cwae=2″ # Optional
+nvram SMTDisable=%01 # Essential
