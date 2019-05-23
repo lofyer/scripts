@@ -1,0 +1,12 @@
+1. /etc/issue
+Console: YES, before login
+SSH: NO
+
+3. /etc/motd
+Console: YES, after login
+SSH: NO
+
+2. /etc/ssh/sshd_config # Banner /etc/ssh/banner
+
+Console: NO
+SSH: YES, before login

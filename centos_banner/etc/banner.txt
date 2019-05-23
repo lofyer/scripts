@@ -1,0 +1,23 @@
+#########################################
+
+    Welcome to ZStack Perf Test Suite!
+
+    Default root password: zstack
+
+    To access the test suite web portal:
+        http://THIS_HOST_IP
+
+    To manage this host:
+        https://THIS_HOST_IP:9090
+        Username: root
+        Default password: zstack
+
+    Tools installed:
+        iperf
+        fio
+        slowhttptest
+        stress-ng
+        cockpit
+
+#########################################
+
