@@ -1,0 +1,32 @@
+一、禁用Captive Portal（不建议使用）
+
+ adb shell settings put global captive_portal_detection_enabled 0
+ adb shell settings put global captive_portal_mode 0
+二、使用V2EX的地址（建议使用）
+
+adb shell settings put global captive_portal_detection_enabled 1
+ adb shell settings put global captive_portal_mode 1
+ adb shell settings put global captive_portal_use_https 0
+ adb shell settings put global captive_portal_server captive.v2ex.co
+ adb shell settings put global captive_portal_http_url http://captive.v2ex.co/generate_204
+ adb shell settings put global captive_portal_https_url https://captive.v2ex.co/generate_204
+
+三、其他国内地址
+命令和第二是一样的 只不过是把网址替换一下就行
+MIUI地址：
+
+connect.rom.miui.com
+http://connect.rom.miui.com/generate_204 (http)
+https://connect.rom.miui.com/generate_204 (https)
+
+googlecn地址：
+
+developers.google.cn
+http://developers.google.cn/generate_204 (http)
+https://developers.google.cn/generate_204 (https)
+
+高通地址：
+
+www.qualcomm.cn
+http://www.qualcomm.cn/generate_204 (http)
+https://www.qualcomm.cn/generate_204 (https)
