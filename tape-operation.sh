@@ -3,14 +3,14 @@
 # +-------------------------------+
 # |          Cartridges           |
 # |    +---------------------+    |
-# |    |     Tape Drive      +=========== target-drive
+# |    |     Tape Drive      +===========> target-drive /dev/st0
 # |    |      r/w head       |    |
 # |    +---------+-+---------+    |
-# |    |         | |         |    |
-# |    |   +-------------+   |    |
+# |    |         |||         |    |
+# |    |   +-----+ +-----+   |    |
 # |    |   |    tape1    |   |    |
 # |    |   +-------------+   |    |
-# |    |   | Tape Changer+=============== target-changer
+# |    |   | Tape Changer+===============> target-changer /dev/sch0
 # |    |   +-------------+   |    |
 # |    |   |    tape2    |   |    |
 # |    |   |    tape3    |   |    |
@@ -36,6 +36,7 @@ export TAPE=/dev/nst0
 # Show generic name of changer sch0
 lsscsi -g
 mtx -f /dev/sg3 inquiry
+mtx -f /dev/sg3 status
 # Push the first tape to the drive
 mtx -f /dev/sg4 first
 
