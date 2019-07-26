@@ -3,3 +3,5 @@ a2enmod proxy_fcgi setenvif
 a2enconf php-fpm
 service apache2 reload
 service apache2 restart
+
+# DELETE the first <IfModule> in /etc/apache/conf-enabled/php7.2-fpm.conf

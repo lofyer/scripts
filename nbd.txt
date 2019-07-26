@@ -1,0 +1,5 @@
+# Server
+nbdkit --filter=cow -p 10001 -n -v --no-fork file file=/nfs_from_hpe/bak.qcow2
+
+# Client
+nbd-client localhost 10001 /dev/nbd0
