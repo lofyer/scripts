@@ -30,6 +30,9 @@ OR
 
 ## local 443 to remote 8443
     ssh -R 8443:remote-server:443 root@remote-server.com
+>If you wanna 0.0.0.0:8443:remote-server:443, please modify /etc/ssh/sshd_config of remote-server.com
+
+    GatewayPorts clientspecified
 
 Localhost Port Forwarding
 
