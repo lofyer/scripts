@@ -1,4 +1,5 @@
 1. Setup static IP:
+eth0:
     vi /etc/network/interfaces
 auto eth0
 iface eth0 inet static
@@ -6,6 +7,26 @@ address 192.168.0.20
 netmask 255.255.255.0
 gateway 192.168.0.1
 dns-nameservers 192.168.0.1
+
+wlan0:
+    vi /etc/wpa_supplicant/wpa_supplicant.conf
+
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+network={
+    ssid="testing"
+    #wpa_passphrase wifi-ssid testingPassword
+    psk=131e1e221f6e06e3911a2d11ff2fac9182665c004de85300f9cac208a6a80531
+}
+
+    vi /etc/network/interfaces
+
+allow-hotplug wlan0
+iface wlan0 inet static
+address 192.168.1.155
+netmask 255.255.255.0
+gateway 192.168.1.1
+wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 
 2. raspi-config:
     expand fs
