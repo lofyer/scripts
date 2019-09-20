@@ -26,23 +26,23 @@ ssh -ND 7070 root@remotehost
 
 # 5. TCP relay tunnel
 
-## remote 443 to local 8443:
-    ssh -g -L 8443:0.0.0.0:443 -f -N root@remote-server.com
+## remote/remote-lan host 443 to local 8443:
+    ssh -g -L 0.0.0.0:8443:remote-server:443 -f -N root@remote-server.com
 
 OR
 
     socat tcp-listen:8443,reuseaddr,fork tcp:remote-server.com:443
 
-## local 443 to remote 8443
-    ssh -R 8443:remote-server:443 root@remote-server.com
+## local/local-lan host 443 to remote 8443
+    ssh -R 0.0.0.0:8443:lan-server:443 root@remote-server.com
 >If you wanna 0.0.0.0:8443:remote-server:443, please modify /etc/ssh/sshd_config of remote-server.com
 
     GatewayPorts clientspecified
 
-Localhost Port Forwarding
+Local Port Forwarding
 
 ![sshL](sshL.png)
 
-Remotehost Port Forwarding
+Remote Port Forwarding
 
 ![sshR](sshR.png)
