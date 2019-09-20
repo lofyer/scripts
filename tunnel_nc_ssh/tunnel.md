@@ -19,7 +19,12 @@
 ## clinet:
     nc -4 -u localhost 5555
 
-# 4. TCP relay tunnel
+# 4. ssh proxy
+
+## socksv5 proxy
+ssh -ND 7070 root@remotehost
+
+# 5. TCP relay tunnel
 
 ## remote 443 to local 8443:
     ssh -g -L 8443:0.0.0.0:443 -f -N root@remote-server.com
