@@ -1,0 +1,20 @@
+1. Download pkgs
+    apt upgrade --download-only
+
+2. Create dir and copy *.deb
+    mkdir -p {/var/www/html/pkgs/main}
+    cp /var/cache/apt/*.deb /var/www/html/pkgs/main
+
+3. Create metadata
+    apt install dpkg-dev
+    cd /var/www/html/pkgs
+    apt-ftparchive --arch amd64 packages amd64 > Packages
+    gzip -k -f Packages
+    apt-ftparchive release . > Release
+
+4. Change /etc/apt/source.list to this:
+deb [trusted=yes] http://localhost/pkgs/ ./
+deb [trusted=yes] file:var/www/html/pkgs/ ./
+
+5. Update
+    apt update and upgrade
