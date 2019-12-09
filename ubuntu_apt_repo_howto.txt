@@ -2,13 +2,14 @@
     apt upgrade --download-only
 
 2. Create dir and copy *.deb
-    mkdir -p {/var/www/html/pkgs/main}
+    mkdir -p /var/www/html/pkgs/main
     cp /var/cache/apt/*.deb /var/www/html/pkgs/main
 
 3. Create metadata
     apt install dpkg-dev
     cd /var/www/html/pkgs
-    apt-ftparchive --arch amd64 packages amd64 > Packages
+    #apt-ftparchive --arch amd64 packages amd64 > Packages
+    apt-ftparchive packages main > Packages
     gzip -k -f Packages
     apt-ftparchive release . > Release
 
