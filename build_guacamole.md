@@ -198,7 +198,37 @@ Headers:
 
 Payload(vnc):
 
-    {"parentIdentifier":"ROOT","name":"test_vnc","protocol":"vnc","parameters":{"port":"5900","read-only":"","swap-red-blue":"","cursor":"","color-depth":"","clipboard-encoding":"","dest-port":"","recording-exclude-output":"","recording-exclude-mouse":"","recording-include-keys":"","create-recording-path":"","enable-sftp":"","sftp-port":"","sftp-server-alive-interval":"","enable-audio":"","hostname":"192.168.0.108","password":"password"},"attributes":{"max-connections":"1","max-connections-per-user":"1","weight":"","failover-only":"","guacd-port":"","guacd-encryption":""}}
+    {
+        "parentIdentifier":"ROOT",
+        "name":"test_vnc",
+        "protocol":"vnc",
+        "parameters":{
+            "port": port,
+            "read-only":"",
+            "swap-red-blue":"",
+            "cursor":"","color-depth":"",
+            "clipboard-encoding":"",
+            "dest-port":"",
+            "recording-exclude-output":"",
+            "recording-exclude-mouse":"",
+            "recording-include-keys":"",
+            "create-recording-path":"",
+            "enable-sftp":"",
+            "sftp-port":"",
+            "sftp-server-alive-interval":"",
+            "enable-audio":"",
+            "hostname": hostname,
+            "password": password
+        },
+        "attributes":{
+            "max-connections":"1",
+            "max-connections-per-user":"1",
+            "weight":"",
+            "failover-only":"",
+            "guacd-port":"",
+            "guacd-encryption":""
+        }
+    }
 
 Payload(ssh):
 
@@ -371,7 +401,7 @@ Headers:
 
 ### Kill an active connections
 
-Method: GET
+Method: PATCH
 
 URL:
 
