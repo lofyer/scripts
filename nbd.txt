@@ -1,5 +1,36 @@
-# Server
+1. nbdkit
 nbdkit --filter=cow -p 10001 -n -v --no-fork file file=/nfs_from_hpe/bak.qcow2
-
-# Client
 nbd-client localhost 10001 /dev/nbd0
+
+2. OR JUST qemu-nbd
+yum install qemu-img
+qemu-nbd -c /dev/nbd0 bak.qcow2
+
+3. Compile
+
+uname -r
+sudo su
+# useradd builder
+# groupadd builder
+cd /home/centos
+# Get Source Code
+wget http://vault.centos.org/7.2.1511/updates/Source/SPackages/kernel-3.10.0-327.28.3.el7.src.rpm
+rpm -ivh kernel-3.10.0-327.28.3.el7.src.rpm
+
+# Build Preparation
+mkdir -p ~/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
+echo '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros
+cd ~/rpmbuild/SPECS
+rpmbuild -bp --target=$(uname -m) kernel.spec
+cd ~/rpmbuild/BUILD/kernel-3.10.0-327.28.3.el7/linux-3.10.0-327.28.3.el7.centos.x86_64/
+
+# Build
+make menuconfig
+# Device Driver -> Block devices -> Set “M” On “Network block device support”
+
+sed -i 's/REQ_TYPE_SPECIAL/REQ_TYPE_DRV_PRIV/' drivers/block/nbd.c
+make prepare && make modules_prepare && make
+make M=drivers/block -j8
+modinfo drivers/block/nbd.ko
+cp drivers/block/nbd.ko /lib/modules/3.10.0-327.28.3.el7.x86_64/extra/
+depmod -a && sudo modprobe nbd

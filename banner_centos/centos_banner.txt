@@ -4,7 +4,7 @@ SSH: NO
 
 3. /etc/motd
 Console: YES, after login
-SSH: NO
+SSH: YES
 
 2. /etc/ssh/sshd_config # Banner /etc/ssh/banner
 

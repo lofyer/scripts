@@ -19,8 +19,10 @@
 # |    +---------------------+    |
 # +-------------------------------+
 
+# yum install targetcli iscsi-initiator-utils
+
 # Change initiator name
-cat cat /etc/iscsi/initiatorname.iscsi
+cat /etc/iscsi/initiatorname.iscsi
 
 # iSCSI discover
 iscsiadm -m discovery --type sendtargets --portal 172.32.1.119
