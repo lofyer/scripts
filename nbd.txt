@@ -34,3 +34,6 @@ make M=drivers/block -j8
 modinfo drivers/block/nbd.ko
 cp drivers/block/nbd.ko /lib/modules/3.10.0-327.28.3.el7.x86_64/extra/
 depmod -a && sudo modprobe nbd
+
+4. OR JUST elrepo
+http://elrepo.org/tiki/tiki-index.php
