@@ -1,11 +1,7 @@
 {
 "Profiles": [
 {
-  "Ansi 3 Color" : {
-    "Green Component" : 0.41970804333686829,
-    "Blue Component" : 0,
-    "Red Component" : 0.81568628549575806
-  },
+  "Use Non-ASCII Font" : false,
   "Tags" : [
 
   ],
@@ -14,10 +10,10 @@
     "Blue Component" : 0.80000001192092896,
     "Red Component" : 0
   },
-  "Ansi 7 Color" : {
-    "Green Component" : 0.80000001192092896,
+  "Ansi 6 Color" : {
+    "Green Component" : 0.52941179275512695,
     "Blue Component" : 0.80000001192092896,
-    "Red Component" : 0.80000001192092896
+    "Red Component" : 0
   },
   "Draw Powerline Glyphs" : true,
   "Bold Color" : {
@@ -25,24 +21,22 @@
     "Blue Component" : 0.098039217293262482,
     "Red Component" : 0.55686277151107788
   },
-  "Ansi 8 Color" : {
-    "Green Component" : 0.5,
-    "Blue Component" : 0.5,
-    "Red Component" : 0.5
+  "Normal Font" : "Monaco 15",
+  "Link Color" : {
+    "Red Component" : 0,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.73423302173614502,
+    "Alpha Component" : 1,
+    "Green Component" : 0.35916060209274292
   },
-  "Ansi 9 Color" : {
+  "Ansi 1 Color" : {
     "Green Component" : 0,
     "Blue Component" : 0,
     "Red Component" : 0.80000001192092896
   },
-  "Horizontal Spacing" : 1,
   "Rows" : 40,
   "Default Bookmark" : "No",
-  "Ansi 5 Color" : {
-    "Green Component" : 0,
-    "Blue Component" : 0.80000001192092896,
-    "Red Component" : 0.80000001192092896
-  },
+  "Custom Directory" : "No",
   "Cursor Guide Color" : {
     "Red Component" : 0.70213186740875244,
     "Color Space" : "sRGB",
@@ -80,9 +74,9 @@
   "Sync Title" : false,
   "Prompt Before Closing 2" : false,
   "BM Growl" : true,
-  "Mouse Reporting" : true,
   "Command" : "\/usr\/local\/bin\/bash",
   "Description" : "Default",
+  "Mouse Reporting" : true,
   "Screen" : -1,
   "Selection Color" : {
     "Green Component" : 0.63921570777893066,
@@ -317,44 +311,50 @@
     "Blue Component" : 0.35294118523597717,
     "Red Component" : 0.45098039507865906
   },
-  "Transparency" : 0,
-  "Guid" : "1AAD88C4-CCB3-483B-9EEA-1B3856FBDBC0",
-  "Ansi 1 Color" : {
-    "Green Component" : 0,
-    "Blue Component" : 0,
-    "Red Component" : 0.80000001192092896
-  },
-  "Link Color" : {
-    "Red Component" : 0,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.73423302173614502,
-    "Alpha Component" : 1,
-    "Green Component" : 0.35916060209274292
-  },
   "Ansi 0 Color" : {
     "Green Component" : 0,
     "Blue Component" : 0,
     "Red Component" : 0
+  },
+  "Guid" : "1AAD88C4-CCB3-483B-9EEA-1B3856FBDBC0",
+  "Horizontal Spacing" : 1,
+  "Transparency" : 0,
+  "Ansi 4 Color" : {
+    "Green Component" : 0,
+    "Blue Component" : 0.80000001192092896,
+    "Red Component" : 0
+  },
+  "Right Option Key Sends" : 0,
+  "Ansi 3 Color" : {
+    "Green Component" : 0.41970804333686829,
+    "Blue Component" : 0,
+    "Red Component" : 0.81568628549575806
+  },
+  "Ansi 7 Color" : {
+    "Green Component" : 0.80000001192092896,
+    "Blue Component" : 0.80000001192092896,
+    "Red Component" : 0.80000001192092896
+  },
+  "Ansi 8 Color" : {
+    "Green Component" : 0.5,
+    "Blue Component" : 0.5,
+    "Red Component" : 0.5
+  },
+  "Ansi 9 Color" : {
+    "Green Component" : 0,
+    "Blue Component" : 0,
+    "Red Component" : 0.80000001192092896
   },
   "Ansi 2 Color" : {
     "Green Component" : 0.58823531866073608,
     "Blue Component" : 0,
     "Red Component" : 0
   },
-  "Use Non-ASCII Font" : false,
-  "Ansi 6 Color" : {
-    "Green Component" : 0.52941179275512695,
-    "Blue Component" : 0.80000001192092896,
-    "Red Component" : 0
-  },
-  "Normal Font" : "Monaco 15",
-  "Custom Directory" : "No",
-  "Ansi 4 Color" : {
+  "Ansi 5 Color" : {
     "Green Component" : 0,
     "Blue Component" : 0.80000001192092896,
-    "Red Component" : 0
-  },
-  "Right Option Key Sends" : 0
+    "Red Component" : 0.80000001192092896
+  }
 },
 {
   "Working Directory" : "\/Users\/lofyer",
@@ -685,7 +685,7 @@
     "Red Component" : 0.80000001192092896
   },
   "Space" : -1,
-  "HotKey Window AutoHides" : true,
+  "HotKey Window AutoHides" : false,
   "Command" : "\/usr\/local\/bin\/bash",
   "Terminal Type" : "xterm-256color",
   "Horizontal Spacing" : 1,
