@@ -1,7 +1,7 @@
 {
 "Profiles": [
 {
-  "Use Non-ASCII Font" : false,
+  "Horizontal Spacing" : 1,
   "Tags" : [
 
   ],
@@ -10,10 +10,10 @@
     "Blue Component" : 0.80000001192092896,
     "Red Component" : 0
   },
-  "Ansi 6 Color" : {
-    "Green Component" : 0.52941179275512695,
+  "Ansi 7 Color" : {
+    "Green Component" : 0.80000001192092896,
     "Blue Component" : 0.80000001192092896,
-    "Red Component" : 0
+    "Red Component" : 0.80000001192092896
   },
   "Draw Powerline Glyphs" : true,
   "Bold Color" : {
@@ -21,22 +21,24 @@
     "Blue Component" : 0.098039217293262482,
     "Red Component" : 0.55686277151107788
   },
-  "Normal Font" : "Monaco 15",
-  "Link Color" : {
-    "Red Component" : 0,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.73423302173614502,
-    "Alpha Component" : 1,
-    "Green Component" : 0.35916060209274292
+  "Ansi 8 Color" : {
+    "Green Component" : 0.5,
+    "Blue Component" : 0.5,
+    "Red Component" : 0.5
   },
-  "Ansi 1 Color" : {
+  "Ansi 9 Color" : {
     "Green Component" : 0,
     "Blue Component" : 0,
     "Red Component" : 0.80000001192092896
   },
+  "Ansi 4 Color" : {
+    "Green Component" : 0,
+    "Blue Component" : 0.80000001192092896,
+    "Red Component" : 0
+  },
   "Rows" : 40,
   "Default Bookmark" : "No",
-  "Custom Directory" : "No",
+  "Right Option Key Sends" : 0,
   "Cursor Guide Color" : {
     "Red Component" : 0.70213186740875244,
     "Color Space" : "sRGB",
@@ -74,9 +76,9 @@
   "Sync Title" : false,
   "Prompt Before Closing 2" : false,
   "BM Growl" : true,
+  "Mouse Reporting" : true,
   "Command" : "\/usr\/local\/bin\/bash",
   "Description" : "Default",
-  "Mouse Reporting" : true,
   "Screen" : -1,
   "Selection Color" : {
     "Green Component" : 0.63921570777893066,
@@ -311,39 +313,17 @@
     "Blue Component" : 0.35294118523597717,
     "Red Component" : 0.45098039507865906
   },
+  "Transparency" : 0,
   "Ansi 0 Color" : {
     "Green Component" : 0,
     "Blue Component" : 0,
     "Red Component" : 0
   },
   "Guid" : "1AAD88C4-CCB3-483B-9EEA-1B3856FBDBC0",
-  "Horizontal Spacing" : 1,
-  "Transparency" : 0,
-  "Ansi 4 Color" : {
-    "Green Component" : 0,
-    "Blue Component" : 0.80000001192092896,
-    "Red Component" : 0
-  },
-  "Right Option Key Sends" : 0,
   "Ansi 3 Color" : {
     "Green Component" : 0.41970804333686829,
     "Blue Component" : 0,
     "Red Component" : 0.81568628549575806
-  },
-  "Ansi 7 Color" : {
-    "Green Component" : 0.80000001192092896,
-    "Blue Component" : 0.80000001192092896,
-    "Red Component" : 0.80000001192092896
-  },
-  "Ansi 8 Color" : {
-    "Green Component" : 0.5,
-    "Blue Component" : 0.5,
-    "Red Component" : 0.5
-  },
-  "Ansi 9 Color" : {
-    "Green Component" : 0,
-    "Blue Component" : 0,
-    "Red Component" : 0.80000001192092896
   },
   "Ansi 2 Color" : {
     "Green Component" : 0.58823531866073608,
@@ -354,7 +334,27 @@
     "Green Component" : 0,
     "Blue Component" : 0.80000001192092896,
     "Red Component" : 0.80000001192092896
-  }
+  },
+  "Use Non-ASCII Font" : false,
+  "Ansi 6 Color" : {
+    "Green Component" : 0.52941179275512695,
+    "Blue Component" : 0.80000001192092896,
+    "Red Component" : 0
+  },
+  "Normal Font" : "Monaco 15",
+  "Link Color" : {
+    "Red Component" : 0,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.73423302173614502,
+    "Alpha Component" : 1,
+    "Green Component" : 0.35916060209274292
+  },
+  "Ansi 1 Color" : {
+    "Green Component" : 0,
+    "Blue Component" : 0,
+    "Red Component" : 0.80000001192092896
+  },
+  "Custom Directory" : "No"
 },
 {
   "Working Directory" : "\/Users\/lofyer",
@@ -636,7 +636,7 @@
     "Blue Component" : 0,
     "Red Component" : 0
   },
-  "HotKey Window Dock Click Action" : 0,
+  "HotKey Window Dock Click Action" : 2,
   "Default Bookmark" : "No",
   "Cursor Color" : {
     "Green Component" : 0.38823530077934265,
