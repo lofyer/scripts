@@ -1,6 +1,6 @@
 1. enable proxy mod
 a2enmod proxy
-a2enmod http_proxy
+a2enmod proxy_http
 
 2. conf
 <VirtualHost *:443>

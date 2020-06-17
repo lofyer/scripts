@@ -8,13 +8,21 @@ GREEN="\[$(tput setaf 2)\]"
 RED="\[$(tput setaf 1)\]"
 YELLOW="\[$(tput setaf 3)\]"
 RESET="\[$(tput sgr0)\]"
-export PS1="\u@\h:\t:[${YELLOW}\w${RESET}]\$ "
+export PS1="\u@\h:${GREEN}\t${RESET}:[${RED}\w${RESET}]\$ "
 
 # For brew
 alias curl='curl --insecure'
 alias l='ls -hil'
 export PATH="/usr/local/sbin:$PATH"
+
+alias code='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
+alias vscode='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
+
+#export PATH="/Users/lofyer/my_git/ssh-tui:$PATH"
+
+#export PATH="/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/3.7/bin/:$PATH"
+#alias port-update='sudo port -v selfupdate;sudo port upgrade outdated;sudo port uninstall inactive'
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 export PATH="/Users/lofyer/my_git/ssh-tui:$PATH"
 
-export PATH="/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/3.7/bin/:$PATH"
-alias port-update='sudo port -v selfupdate;sudo port upgrade outdated;sudo port uninstall inactive'
+export GOPATH="/Users/lofyer/my_workspace/go"
