@@ -4,6 +4,7 @@
 from flask import Flask, current_app, g, render_template, send_from_directory
 import jinja2
 import json, os, subprocess
+from waitress import serve
 
 template_dir = os.path.abspath('static/')
 app = Flask(__name__, template_folder=template_dir)
@@ -31,4 +32,5 @@ def version():
 
 if __name__ == '__main__':
     app.secret_key="zstack-srm"
-    app.run(host='0.0.0.0', port=7000, debug = True)
+    #app.run(host='0.0.0.0', port=7000, debug = True)
+    serve(app, host='0.0.0.0', port=9998)

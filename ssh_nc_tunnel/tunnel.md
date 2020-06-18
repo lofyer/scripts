@@ -49,3 +49,7 @@ Local Port Forwarding
 Remote Port Forwarding
 
 ![sshR](sshR.png)
+
+# 6. Change from ssh to autossh
+
+    autossh -f -M 20000 -R 0.0.0.0:8443:lan-server:443 root@remote-server
