@@ -38,9 +38,13 @@ OR
 
     ssh -R 0.0.0.0:8443:lan-server:443 root@remote-server
 
->If you wanna 0.0.0.0:8443:remote-server:443, please modify /etc/ssh/sshd_config of remote-server
+>If you wanna 0.0.0.0:8443:remote-server:443 rather than 127.0.0.1:8443:remote-server:443, please modify /etc/ssh/sshd_config of remote-server
 
     GatewayPorts clientspecified
+
+>Close sshd CLOSED_WAIT connections
+
+    StreamLocalBindUnlink yes
 
 Local Port Forwarding
 
@@ -52,4 +56,8 @@ Remote Port Forwarding
 
 # 6. Change from ssh to autossh
 
+    # Auto connect when closed
     autossh -f -M 20000 -R 0.0.0.0:8443:lan-server:443 root@remote-server
+
+    # Clean CLOSE_WAIT process
+    netstat -anp | grep ':8889 ' | grep CLOSE_WAIT | awk '{print $7}' | cut -d \/ -f1 | grep -oE "[[:digit:]]{1,}" | xargs kill -9

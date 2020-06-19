@@ -1,0 +1,2 @@
+#!/bin/bash
+netstat -anp | grep ':8889 ' | grep CLOSE_WAIT | awk '{print $7}' | cut -d \/ -f1 | grep -oE "[[:digit:]]{1,}" | xargs kill -9
