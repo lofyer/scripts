@@ -1,0 +1,15 @@
+[Unit]
+Description=example service
+After=network.target
+StartLimitBurst=2
+StartLimitIntervalSec=5
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=centos
+ExecStart=python3 /root/server.py
+
+[Install]
+WantedBy=multi-user.target
