@@ -28,7 +28,7 @@ cat /etc/iscsi/initiatorname.iscsi
 iscsiadm -m discovery --type sendtargets --portal 172.32.1.119
 
 # iSCSI login
-iscsiadm -m node --login --portal 172.32.1.119
+iscsiadm -m node --login --portal 172.32.1.119 --targetname iqn.2003-01.org.linux-iscsi.172-30-5-1.x8664:sn.9dec6e6f9ffc
 
 # Without rewind
 export TAPE=/dev/nst0
