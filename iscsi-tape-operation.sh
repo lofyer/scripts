@@ -81,4 +81,4 @@ mt erase
 mt offline/eject
 
 # iSCSI logout
-iscsiadm --mode node --logoutall=all
+iscsiadm -m node --logoutall=all
