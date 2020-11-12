@@ -9,3 +9,8 @@ writer.save()
 excel_path = 'output.xlsx'
 d = pd.read_excel(excel_path, sheet_name=None)
 print(d['Sheet1'])
+
+import pyexcel as pe
+records = p.get_records(file_name="your_file.xls")
+for r in records:
+    print(f"{r['Serving Size']} of {r['Coffees']} has {r['Caffeine (mg)']} mg")
