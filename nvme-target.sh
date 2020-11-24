@@ -22,7 +22,7 @@ echo 1 > enable
 # remove target
 #rmdir /sys/kernel/config/nvmet/subsystems/nvmet-test
 
-# setup target
+# setup target portal
 mkdir /sys/kernel/config/nvmet/ports/1
 cd /sys/kernel/config/nvmet/ports/1
 echo 10.147.27.85 > addr_traddr
@@ -31,9 +31,16 @@ echo 4420 > addr_trsvcid
 echo ipv4 > addr_adrfam
 ln -s /sys/kernel/config/nvmet/subsystems/nvmet-test/ /sys/kernel/config/nvmet/ports/1/subsystems/nvmet-test
 
+# remove portal
+#rm /sys/kernel/config/nvmet/ports/1/subsystems/nvmet-test
+#rmdir /sys/kernel/config/nvmet/ports/1
+#rmdir /sys/kernel/config/nvmet/subsystems/nvmet-test/namespaces/1
+#rmdir /sys/kernel/config/nvmet/subsystems/nvmet-test
+
 # setup client
 modprobe nvme
 modprobe nvme-tcp
 nvme discover -t tcp -a 10.147.27.85 -s 4420
 nvme connect -t tcp -a 10.147.27.85 -s 4420 -n nvmet-test
 nvme list
+nvme disconnect -d /dev/nvme0
