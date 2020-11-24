@@ -1,0 +1,50 @@
+#https://blogs.oracle.com/linux/nvme-over-tcp
+1. Setup Target
+modprobe nvme_tcp
+modprobe nvmet
+modprobe nvmet-tcp
+mkdir /sys/kernel/config/nvmet/subsystems/nvmet-test
+cd /sys/kernel/config/nvmet/subsystems/nvmet-test
+echo 1 |sudo tee -a attr_allow_any_host > /dev/null
+mkdir namespaces/1
+cd namespaces/1/
+echo -n /dev/nvme0n1 |sudo tee -a device_path > /dev/null
+echo 1|sudo tee -a enable > /dev/null
+
+2. Setup Target(null)
+modprobe null_blk nr_devices=1
+ls /dev/nullb0
+/dev/nullb0
+
+echo -n /dev/nullb0 > device_path
+echo 1 > enable
+mkdir /sys/kernel/config/nvmet/ports/1
+cd /sys/kernel/config/nvmet/ports/1
+echo 10.147.27.85 |sudo tee -a addr_traddr > /dev/null
+echo tcp|sudo tee -a addr_trtype > /dev/null
+echo 4420|sudo tee -a addr_trsvcid > /dev/null
+echo ipv4|sudo tee -a addr_adrfam > /dev/null
+ln -s /sys/kernel/config/nvmet/subsystems/nvmet-test/ /sys/kernel/config/nvmet/ports/1/subsystems/nvmet-t
+
+3. Setup Client
+modprobe nvme
+modprobe nvme-tcp
+ 
+nvme discover -t tcp -a 10.147.27.85 -s 4420
+Discovery Log Number of Records 1, Generation counter 3
+=====Discovery Log Entry 0======
+trtype:  tcp
+adrfam:  ipv4
+subtype: nvme subsystem
+treq:    not specified, sq flow control disable supported
+portid:  1
+trsvcid: 4420
+subnqn:  nvmet-test
+traddr:  10.147.27.85
+sectype: none
+
+nvme connect -t tcp -n nvmet-test -a 10.147.27.85 -s 4420
+nvme list
+Node          SN                  Model           Namespace Usage       Format    FW Rev
+------------- ------------------- --------------- --------- ----------- --------- -------
+/dev/nvme0n1  610d2342db36e701    Linux           1         2.20  GB /  2.20  GB  512 B + 0 

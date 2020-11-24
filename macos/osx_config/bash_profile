@@ -22,7 +22,9 @@ alias vscode='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/
 
 #export PATH="/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/3.7/bin/:$PATH"
 #alias port-update='sudo port -v selfupdate;sudo port upgrade outdated;sudo port uninstall inactive'
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+#export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 export PATH="/Users/lofyer/my_git/ssh-tui:$PATH"
 
-export GOPATH="/Users/lofyer/my_workspace/go"
+#export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
+# brew install bash-completion
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
