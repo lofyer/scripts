@@ -1,6 +1,12 @@
 yum install -y targetcli
 
-cd iscsi
+# Enable Thin Provisioning Write Same (blkdiscard -z).
+# Fix write same limit, client see this as 32M, but default value is 4096.
+cd /backstores
+set attribute emulate_tpu=1 emulate_tpws=1 max_write_same_len=65335
+
+cd /iscsi
 create wwn=iqn.2015-09.io.zstack.iscsi:centos
+
 cd iqn.2015-09.io.zstack.iscsi:centos/tpg1/
 set attribute authentication=0 demo_mode_write_protect=0 generate_node_acls=1 cache_dynamic_acls=1
