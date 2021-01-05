@@ -1,0 +1,5 @@
+rem cmd
+echo "Hello" > C:\test.txt
+
+rem rename the computer to "my-new-hostname"
+netdom renamecomputer %COMPUTERNAME% /NewName "my-new-hostname" /force

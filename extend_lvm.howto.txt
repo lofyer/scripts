@@ -44,5 +44,6 @@ Command (m for help): w
 
 [root@linux~]# pvresize /dev/sda2
 [root@linux~]# lvresize -l +100%FREE /dev/mapper/centos-root
+#[root@linux~]# lvresize -L +50G /dev/mapper/centos-root
 [root@linux~]# resize2fs /dev/mapper/centos-root # EXT3/EXT4
 [root@linux~]# xfs_grow /dev/mapper/centos-root # XFS

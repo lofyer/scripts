@@ -1,0 +1,10 @@
+#cloud-config
+write_files:
+   content: "wget XX"
+   path: C:\test.txt
+   permissions: '0o777'
+
+runcmd:
+  - 'dir C:\\'
+  - ['echo', '1']
+  - 'C:\test.txt'
