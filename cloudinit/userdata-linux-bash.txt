@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "Cloudinit userdata file" > /tmp/test.txt
