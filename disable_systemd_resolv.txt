@@ -1,0 +1,7 @@
+systemctl disable --now systemd-resolved.service
+
+Then put the following line in the [main] section of your /etc/NetworkManager/NetworkManager.conf
+  dns=default
+
+rm /etc/resolv.conf
+service network-manager restart
