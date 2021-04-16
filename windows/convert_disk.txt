@@ -1,5 +1,0 @@
-wmic diskdrive list
-# PowerShell:
-# Get-WmiObject Win32_DiskDrive
-
-qemu-img convert -f raw \\.\PHYSICALDRIVE0 -O qcow2 windows.qcow2
