@@ -1,7 +1,6 @@
 #!/bin/bash
 modprobe nvme_tcp
 modprobe nvmet
-modprobe nvmet-tcp
 
 # create target
 mkdir /sys/kernel/config/nvmet/subsystems/nvmet-test

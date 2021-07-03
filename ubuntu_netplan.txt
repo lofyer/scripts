@@ -1,0 +1,39 @@
+# https://netplan.io/examples/
+
+# systemctl disable --now network-manager
+# apt remove --purge "network-manager*"
+
+# vi /etc/netplan/01-network-manager-all.yaml
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eno3:
+      dhcp4: no
+      addresses:
+        - 192.168.0.51/24
+      gateway4: 192.168.0.1
+      nameservers:
+        search: [example.com, wakuang.com]
+        addresses: [192.168.0.1]
+  bridges:
+    br0:
+      dhcp4: no
+      interfaces:
+        - eno4
+      addresses:
+        - 192.168.0.50/24
+      gateway4: 192.168.0.1
+      nameservers:
+        search: [example.com, wakuang.com]
+        addresses: [192.168.0.1]
+  vlans:
+    vlan15:
+      id: 15
+      link: eno4
+      addresses: [ "10.3.99.5/24" ]
+      gateway4: 10.3.99.1
+      nameservers:
+        addresses: [ "127.0.0.1" ]
+        search: [ domain1.example.com, domain2.example.com ]
