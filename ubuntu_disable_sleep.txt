@@ -1,1 +1,1 @@
-systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+systemctl disable --now sleep.target suspend.target hibernate.target hybrid-sleep.target
