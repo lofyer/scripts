@@ -1,0 +1,7 @@
+apt/yum install -y cockpit
+systemctl enable --now cockpit
+systemctl enable --now cockpit.socket
+
+# UBUNTU LVM
+# apt install udisks2-lvm2
+# systemctl restart udisks2 cockpit

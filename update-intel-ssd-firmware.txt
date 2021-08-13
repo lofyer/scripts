@@ -1,0 +1,3 @@
+intelmas show -intelssd
+intelmas load -intelssd 0
+reboot

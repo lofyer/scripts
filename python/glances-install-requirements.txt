@@ -1,0 +1,6 @@
+cpuinfo
+pynvml
+pymdstat
+pySMART
+wifi
+zeroconf
