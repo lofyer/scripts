@@ -1,3 +1,0 @@
-./certbot-auto -d fusionworks.cn -d *.fusionworks.cn --manual --preferred-challenges dns-01 --server https://acme-v02.api.letsencrypt.org/directory certonly --agree-tos
-
-Add the second challenge to your DNS TXT.

@@ -1,0 +1,6 @@
+#pip3 install certbot certbot-dns-godaddy
+certbot certonly --cert-name *.lofyer.org
+# Goto https://developer.godaddy.com/ to get your secret/key
+# cat /root/backup/certbot-howto/godaddy.ini
+#dns_godaddy_secret = 1234
+#dns_godaddy_key = 567890
