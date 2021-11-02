@@ -1,2 +1,5 @@
 socat tcp4-listen:2222,fork tcp6:[2001:19f0:7001:5a34:5400:01ff:feb5:5bcd]:80
 socat udp4-listen:2222,fork udp6:[2001:19f0:7001:5a34:5400:01ff:feb5:5bcd]:80
+
+# redirect service from 7983 to 4900
+socat tcp-l:4900,fork,reuseaddr tcp:0.0.0.0:7983

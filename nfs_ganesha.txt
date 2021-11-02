@@ -1,0 +1,33 @@
+# cat /etc/ganesha/ganesha.conf
+# create new
+NFS_CORE_PARAM {
+    # possible to mount with NFSv3 to NFSv4 Pseudo path
+    mount_path_pseudo = true;
+    # NFS protocol
+    Protocols = 3,4;
+}
+EXPORT_DEFAULTS {
+    # default access mode
+    Access_Type = RW;
+}
+EXPORT {
+    # uniq ID
+    Export_Id = 101;
+    # mount path of Gluster Volume
+    Path = "/xfs";
+    FSAL {
+        # any name
+        name = xfs;
+        #name = vfs;
+    }
+    # config for root Squash
+    Squash="No_root_squash";
+    # NFSv4 Pseudo path
+    Pseudo="/xfs/";
+    # allowed security options
+    SecType = "sys";
+}
+LOG {
+    # default log level
+    Default_Log_Level = WARN;
+}
