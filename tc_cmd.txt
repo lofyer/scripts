@@ -1,0 +1,18 @@
+# Bandwidth limit
+tc qdisc add dev enp176s0f0 root tbf rate 1gbit latency 10ms burst 1540
+
+# Packet corrupt
+tc qdisc add dev enp176s0f0 root netem corrupt 5%
+
+# Packet loss
+tc qdisc add dev enp176s0f0 root netem loss 5%
+tc qdisc change dev enp176s0f0 root netem loss 0.2%
+
+# Packet delay
+tc qdisc add dev enp176s0f0 root netem delay 20ms
+
+# Delete rules
+tc qdisc del dev enp176s0f0 root
+
+# Show rules
+tc qdisc show dev enp176s0f0

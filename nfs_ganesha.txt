@@ -5,6 +5,8 @@ NFS_CORE_PARAM {
     mount_path_pseudo = true;
     # NFS protocol
     Protocols = 3,4;
+    # Default 200, too many for low performance storage
+    RPC_Ioq_ThrdMax = 16;
 }
 EXPORT_DEFAULTS {
     # default access mode
