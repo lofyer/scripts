@@ -13,8 +13,8 @@ yum install -y postgresql96-server
 Optionally initialize the database and enable automatic start:
 
 ```bash
-/usr/pgsql-96/bin/postgresql-96-setup initdb
-systemctl enable --now postgresql-96
+/usr/pgsql-9.6/bin/postgresql96-setup initdb
+systemctl enable --now postgresql-9.6.service
 ```
 
 ## 1.1. Change postgres password
@@ -37,12 +37,14 @@ psql -h localhost postgres postgres
 
 ```bash
 echo "listen_addresses = '*'" >> /var/lib/pgsql/9.6/data/postgresql.conf
-systemctl restart postgresql96
+systemctl restart postgresql-9.6
 ```
 
 ## 2. Setup Active Active with Bucardo
 
 Ref: https://developer.ibm.com/tutorials/configure-postgresql-active-active-replication-bucardo/
+
+Ref: https://www.waytoeasylearn.com/learn/bucardo-installation/
 
 Following should be executed on `both nodes`.
 
@@ -52,14 +54,11 @@ mkdir -p /var/run/bucardo
 mkdir -p /var/log/bucardo
 
 # Create database bucardo
-su - postgres                                               # change user to *postgres*
-psql                                                              # enter the psql shell
-create user bucardo with superuser password 'bucardobucardo';
-create database bucardo with owner = bucardo;
+sudo -u postgres -H -- psql -c "create user bucardo with superuser password 'zstack.postgresql.password';"
+sudo -u postgres -H -- psql -c "create database bucardo with owner = bucardo;"
 
 # allow user bucardo from remote
-echo -e "host\tall\t\tpostgres\t0.0.0.0/0\t\ttrust" >> /var/lib/pgsql/9.6/data/pg_hba.conf
-echo -e "local\tall\t\tbucardo\t\t\t\t\ttrust" >> /var/lib/pgsql/9.6/data/pg_hba.conf
+echo -e "host\tall\t\tbucardo\t0.0.0.0/0\t\tpassword" >> /var/lib/pgsql/9.6/data/pg_hba.conf
 echo -e "local\tall\t\tbucardo\t\t\t\t\ttrust" >> /var/lib/pgsql/9.6/data/pg_hba.conf
 ```
 
