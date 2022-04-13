@@ -1,7 +1,21 @@
-# PostgreSQL Howto(Active Active)
 
-## 1. Single Installation
+ggOglobal_defs {
+        vrrp_garp_master_refresh 60
+        vrrp_check_unicast_src
+}
 
+ls
+
+
+ip -4 a
+51
+kj$xs51p- 4 a
+
+
+
+
+
+ip -4 a
 Ref: https://www.postgresql.org/download/linux/redhat/
 Install the repository RPM:
 
@@ -166,7 +180,6 @@ On `node1`:
 bucardo add sync sync_one2two relgroup=one2two db=serv1,serv2
 ```
 
-On `node2`:
 
 ```
 bucardo add sync sync_two2one relgroup=two2one db=serv2,serv1
@@ -175,7 +188,6 @@ bucardo add sync sync_two2one relgroup=two2one db=serv2,serv1
 On `both nodes`:
 
 ```
-bucardo start
 bucardo list all
 bucardo status
 ```

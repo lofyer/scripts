@@ -1,3 +1,6 @@
+0. LIST
+iptables -L -n --line-numbers
+
 1. NAT
 iptables -t nat -A POSTROUTING -j MASQUERADE
 
@@ -17,3 +20,6 @@ iptables -A INPUT -p tcp -s 0.0.0.0/0 --dport 53 -j DROP
 iptables -A OUTPUT -d qyapi.weixin.qq.com -j ACCEPT
 iptables -A OUTPUT -d 192.168.0.0/16 -j ACCEPT
 iptables -A OUTPUT -d 0/0 -j DROP
+
+5. Instert
+iptables -I INPUT 1 -p tcp -s 0.0.0.0/0 --dport 5432 -j ACCEPT
