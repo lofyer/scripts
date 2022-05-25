@@ -1,0 +1,3 @@
+mc alias set zstack http://minio.zstack.io:9000 zstack password
+mc ls zstack/mirror/zstone_4.1.0/
+mc cp zstack/download/xxx .

@@ -1,3 +1,5 @@
+# https://www.intel.com/content/www/us/en/download/19520/intel-memory-and-storage-tool-cli-command-line-interface.html?v=t
+
 intelmas show -intelssd
 intelmas load -intelssd 0
 reboot
